@@ -7,7 +7,7 @@ Symbol
 	:	'a'..'z'('A'..'Z'|'a'..'z'|'0'..'9')*('!'|'?')?;
 	
 program 
-	:	function program | function;
+	:	function program?;
 	
 function
 	:	'function' Symbol ':' definition;
@@ -19,13 +19,13 @@ input
 	:	inputSub | ;
 	
 inputSub
-	:	Variable ',' inputSub | Variable;
+	:	Variable (',' inputSub)?;
 	
 output	
-	:	Variable ',' output | Variable;
+	:	Variable (',' output)?;
 	
 commands
-	:	command ';' commands | command;
+	:	command (';' commands)?;
 	
 commandNop	
 	:	'nop';
@@ -49,10 +49,10 @@ command
 	:	commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach;
 	
 vars
-	:	Variable ',' vars | Variable;
+	:	Variable (',' vars)?;
 	
 exprs
-	:	expression ',' exprs | expression;
+	:	expression (',' exprs)?;
 	
 exprBase1
 	:	'nil' | Variable | Symbol;
@@ -70,7 +70,7 @@ exprBase
 	:	exprBase1 | exprBase2 | exprBase3 | exprBase4;
 	
 expression
-	:	exprBase | exprBase '=?' exprBase;
+	:	exprBase ('=?' exprBase)?;
 	
 lexpr
 	:	exprBase lexpr | ;
