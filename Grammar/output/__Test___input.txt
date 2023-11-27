@@ -1,6 +1,12 @@
-function true : 
+function true :
 read
 %
- Result := (cons nil nil)
+ Result := nil;
+
+ if Result=?nil then 
+   Result := nil
+ else
+   Result := az
+ fi 
 %
 write Result
