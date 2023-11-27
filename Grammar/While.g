@@ -23,7 +23,11 @@ tokens {
 	TL;
 	SYMB;
 	VARS;
-	EXPRS;	
+	EXPRS;
+	CONDITION;
+	NOM;
+	THEN;
+	ELSE;
 }
 
 Variable 
@@ -36,13 +40,14 @@ program
 	:	function program? -> ^(PROGRAM function+);
 	
 function
-	:	'function' Symbol ':' definition -> ^(FUNCTION Symbol definition);
+	:	'function' Symbol ':' definition -> ^(FUNCTION ^(NOM Symbol) definition);
 	
 definition
 	:	'read' input '%' commands '%' 'write' output -> input commands output;
 	
 input	
-	:	inputSub | -> inputSub?;
+	:	inputSub -> inputSub | -> ^(INPUTS);
+//	:	inputSub? -> inputSub?;
 	
 inputSub
 	:	Variable (',' inputSub)? -> ^(INPUTS Variable*);
@@ -51,7 +56,7 @@ output
 	:	Variable (',' output)? -> ^(OUTPUTS Variable+);
 	
 commands
-	:	command (';' commands)? -> ^(COMMANDS command+);
+	:	command (';' command)* -> ^(COMMANDS command+);
 	
 commandNop	
 	:	'nop' -> NOP;
@@ -60,8 +65,10 @@ commandEqual
 	:	vars ':=' exprs -> ^(EQUAL vars exprs);
 	
 commandIf
-	:	'if' expression 'then' commands ('else' commands)? 'fi' -> ^(IF expression commands commands?);
-	
+	//:	'if' expression 'then' c1=commands ('else' commands)? 'fi' -> ^(IF ^(CONDITION expression) ^(THEN $c1) ^(ELSE commands)?);
+	:	'if' expression 'then' c1=commands ('else' c2=commands)? 'fi' -> ^(IF ^(CONDITION expression) ^(THEN $c1) ^(ELSE $c2)?);
+
+
 commandWhile
 	:	'while' expression 'do' commands 'od' -> ^(WHILE expression commands);
 	
@@ -75,10 +82,10 @@ command
 	:	commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach;
 	
 vars
-	:	Variable (',' vars)? -> ^(VARS Variable+);
+	:	Variable (',' Variable)* -> ^(VARS Variable+);
 	
 exprs
-	:	expression (',' exprs)? -> ^(EXPRS expression+);
+	:	expression (',' expression)* -> ^(EXPRS expression+);
 	
 exprBase1
 	:	'nil' -> NIL | Variable | Symbol;
@@ -99,5 +106,5 @@ expression
 	:	exprBase ('=?' exprBase)? -> exprBase+ ;
 	
 lexpr
-	:	exprBase lexpr | -> exprBase;
+	:	(exprBase lexpr)? -> exprBase?;
 
