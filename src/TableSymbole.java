@@ -10,9 +10,22 @@ public class TableSymbole {
         fonction = new ArrayList<>();
     }
 
-   public List<Fonction> get(){
+    public List<Fonction> get(){
         return fonction;
-   }
+    }
+
+    public void AddFonction(Fonction fonc){
+        fonction.add(fonc);
+    }
+
+    public Fonction getFonction (String nom){
+        for (Fonction entry : fonction) {
+            if (entry.getNom().equals(nom)) {
+                return entry;
+            }
+        }
+        return null;
+    }
 
     // Récupérer la valeur associée à un symbole
     public CommonTree obtenirArbreFonction(String nom) {

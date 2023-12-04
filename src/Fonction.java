@@ -17,7 +17,15 @@ class Fonction extends Symbole{
         return variable;
     }
 
-        public List<Symbole> getParametre() {
+    public List<Symbole> getParametre() {
         return parametre;
+    }
+
+    public void addVariable(Symbole var){
+        variable.add(var);
+    }
+
+    public void addParametre(Symbole param){
+        parametre.add(param);
     }
 }
