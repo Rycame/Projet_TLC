@@ -10,10 +10,9 @@ public class TableSymbole {
         fonction = new ArrayList<>();
     }
 
-    // Ajouter un symbole à la table
-    public void ajouterSymbole(String nom,CommonTree arbre) {
-        fonction.add(new Fonction(nom, arbre));
-    }
+   public List<Fonction> get(){
+        return fonction;
+   }
 
     // Récupérer la valeur associée à un symbole
     public CommonTree obtenirArbreFonction(String nom) {
