@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g 2023-11-27 15:15:30
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g 2023-11-27 15:58:14
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -71,15 +71,15 @@ public class WhileLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g"; }
+    public String getGrammarFileName() { return "/home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g"; }
 
     // $ANTLR start "T__29"
     public final void mT__29() throws RecognitionException {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:3:7: ( 'function' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:3:9: 'function'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:3:7: ( 'function' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:3:9: 'function'
             {
             match("function"); 
 
@@ -99,8 +99,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:4:7: ( ':' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:4:9: ':'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:4:7: ( ':' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:4:9: ':'
             {
             match(':'); 
 
@@ -119,8 +119,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:5:7: ( 'read' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:5:9: 'read'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:5:7: ( 'read' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:5:9: 'read'
             {
             match("read"); 
 
@@ -140,8 +140,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:6:7: ( '%' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:6:9: '%'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:6:7: ( '%' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:6:9: '%'
             {
             match('%'); 
 
@@ -160,8 +160,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:7:7: ( 'write' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:7:9: 'write'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:7:7: ( 'write' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:7:9: 'write'
             {
             match("write"); 
 
@@ -181,8 +181,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:8:7: ( ',' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:8:9: ','
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:8:7: ( ',' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:8:9: ','
             {
             match(','); 
 
@@ -201,8 +201,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:9:7: ( ';' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:9:9: ';'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:9:7: ( ';' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:9:9: ';'
             {
             match(';'); 
 
@@ -221,8 +221,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:10:7: ( 'nop' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:10:9: 'nop'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:10:7: ( 'nop' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:10:9: 'nop'
             {
             match("nop"); 
 
@@ -242,8 +242,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:11:7: ( ':=' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:11:9: ':='
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:11:7: ( ':=' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:11:9: ':='
             {
             match(":="); 
 
@@ -263,8 +263,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:12:7: ( 'if' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:12:9: 'if'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:12:7: ( 'if' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:12:9: 'if'
             {
             match("if"); 
 
@@ -284,8 +284,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:13:7: ( 'then' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:13:9: 'then'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:13:7: ( 'then' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:13:9: 'then'
             {
             match("then"); 
 
@@ -305,8 +305,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:14:7: ( 'else' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:14:9: 'else'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:14:7: ( 'else' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:14:9: 'else'
             {
             match("else"); 
 
@@ -326,8 +326,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:15:7: ( 'fi' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:15:9: 'fi'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:15:7: ( 'fi' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:15:9: 'fi'
             {
             match("fi"); 
 
@@ -347,8 +347,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:16:7: ( 'while' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:16:9: 'while'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:16:7: ( 'while' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:16:9: 'while'
             {
             match("while"); 
 
@@ -368,8 +368,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:17:7: ( 'do' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:17:9: 'do'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:17:7: ( 'do' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:17:9: 'do'
             {
             match("do"); 
 
@@ -389,8 +389,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:18:7: ( 'od' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:18:9: 'od'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:18:7: ( 'od' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:18:9: 'od'
             {
             match("od"); 
 
@@ -410,8 +410,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:19:7: ( 'for' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:19:9: 'for'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:19:7: ( 'for' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:19:9: 'for'
             {
             match("for"); 
 
@@ -431,8 +431,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:20:7: ( 'foreach' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:20:9: 'foreach'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:20:7: ( 'foreach' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:20:9: 'foreach'
             {
             match("foreach"); 
 
@@ -452,8 +452,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:21:7: ( 'in' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:21:9: 'in'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:21:7: ( 'in' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:21:9: 'in'
             {
             match("in"); 
 
@@ -473,8 +473,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:22:7: ( 'nil' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:22:9: 'nil'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:22:7: ( 'nil' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:22:9: 'nil'
             {
             match("nil"); 
 
@@ -494,8 +494,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:23:7: ( '(' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:23:9: '('
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:23:7: ( '(' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:23:9: '('
             {
             match('('); 
 
@@ -514,8 +514,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:24:7: ( 'cons' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:24:9: 'cons'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:24:7: ( 'cons' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:24:9: 'cons'
             {
             match("cons"); 
 
@@ -535,8 +535,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:25:7: ( ')' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:25:9: ')'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:25:7: ( ')' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:25:9: ')'
             {
             match(')'); 
 
@@ -555,8 +555,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:26:7: ( 'list' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:26:9: 'list'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:26:7: ( 'list' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:26:9: 'list'
             {
             match("list"); 
 
@@ -576,8 +576,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:27:7: ( 'hd' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:27:9: 'hd'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:27:7: ( 'hd' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:27:9: 'hd'
             {
             match("hd"); 
 
@@ -597,8 +597,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:28:7: ( 'tl' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:28:9: 'tl'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:28:7: ( 'tl' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:28:9: 'tl'
             {
             match("tl"); 
 
@@ -618,8 +618,8 @@ public class WhileLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:29:7: ( '=?' )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:29:9: '=?'
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:29:7: ( '=?' )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:29:9: '=?'
             {
             match("=?"); 
 
@@ -639,11 +639,11 @@ public class WhileLexer extends Lexer {
         try {
             int _type = Variable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:34:2: ( 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )? )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:34:4: 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )?
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:34:2: ( 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )? )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:34:4: 'A' .. 'Z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )?
             {
             matchRange('A','Z'); 
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:34:12: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )*
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:34:12: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -656,7 +656,7 @@ public class WhileLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:
+            	    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -676,7 +676,7 @@ public class WhileLexer extends Lexer {
                 }
             } while (true);
 
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:34:41: ( '!' | '?' )?
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:34:41: ( '!' | '?' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -685,7 +685,7 @@ public class WhileLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:
+                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:
                     {
                     if ( input.LA(1)=='!'||input.LA(1)=='?' ) {
                         input.consume();
@@ -718,11 +718,11 @@ public class WhileLexer extends Lexer {
         try {
             int _type = Symbol;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:37:2: ( 'a' .. 'z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )? )
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:37:4: 'a' .. 'z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )?
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:37:2: ( 'a' .. 'z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )? )
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:37:4: 'a' .. 'z' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )* ( '!' | '?' )?
             {
             matchRange('a','z'); 
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:37:12: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )*
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:37:12: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -735,7 +735,7 @@ public class WhileLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:
+            	    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -755,7 +755,7 @@ public class WhileLexer extends Lexer {
                 }
             } while (true);
 
-            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:37:41: ( '!' | '?' )?
+            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:37:41: ( '!' | '?' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -764,7 +764,7 @@ public class WhileLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:
+                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:
                     {
                     if ( input.LA(1)=='!'||input.LA(1)=='?' ) {
                         input.consume();
@@ -793,208 +793,208 @@ public class WhileLexer extends Lexer {
     // $ANTLR end "Symbol"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:8: ( T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | Variable | Symbol )
+        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:8: ( T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | Variable | Symbol )
         int alt5=29;
         alt5 = dfa5.predict(input);
         switch (alt5) {
             case 1 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:10: T__29
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:10: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 2 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:16: T__30
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:16: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 3 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:22: T__31
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:22: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 4 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:28: T__32
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:28: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 5 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:34: T__33
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:34: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 6 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:40: T__34
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:40: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 7 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:46: T__35
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:46: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 8 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:52: T__36
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:52: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 9 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:58: T__37
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:58: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 10 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:64: T__38
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:64: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 11 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:70: T__39
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:70: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 12 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:76: T__40
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:76: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 13 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:82: T__41
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:82: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 14 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:88: T__42
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:88: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 15 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:94: T__43
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:94: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 16 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:100: T__44
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:100: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 17 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:106: T__45
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:106: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 18 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:112: T__46
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:112: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 19 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:118: T__47
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:118: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
             case 20 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:124: T__48
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:124: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
             case 21 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:130: T__49
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:130: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
             case 22 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:136: T__50
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:136: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
             case 23 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:142: T__51
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:142: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
             case 24 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:148: T__52
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:148: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
             case 25 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:154: T__53
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:154: T__53
                 {
                 mT__53(); 
 
                 }
                 break;
             case 26 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:160: T__54
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:160: T__54
                 {
                 mT__54(); 
 
                 }
                 break;
             case 27 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:166: T__55
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:166: T__55
                 {
                 mT__55(); 
 
                 }
                 break;
             case 28 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:172: Variable
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:172: Variable
                 {
                 mVariable(); 
 
                 }
                 break;
             case 29 :
-                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:1:181: Symbol
+                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:1:181: Symbol
                 {
                 mSymbol(); 
 
@@ -1008,17 +1008,17 @@ public class WhileLexer extends Lexer {
 
     protected DFA5 dfa5 = new DFA5(this);
     static final String DFA5_eotS =
-        "\1\uffff\1\25\1\32\1\25\1\uffff\1\25\2\uffff\6\25\1\uffff\1\25"+
-        "\1\uffff\2\25\3\uffff\1\25\1\53\1\25\2\uffff\5\25\1\62\1\63\1\25"+
-        "\1\65\1\25\1\67\1\70\2\25\1\73\1\25\1\uffff\1\76\3\25\1\102\1\103"+
+        "\1\uffff\1\25\1\32\1\25\1\uffff\1\25\2\uffff\6\25\1\uffff\1\25\1"+
+        "\uffff\2\25\3\uffff\1\25\1\53\1\25\2\uffff\5\25\1\62\1\63\1\25\1"+
+        "\65\1\25\1\67\1\70\2\25\1\73\1\25\1\uffff\1\76\3\25\1\102\1\103"+
         "\2\uffff\1\25\1\uffff\1\25\2\uffff\2\25\1\uffff\2\25\1\uffff\1\112"+
         "\2\25\2\uffff\1\115\1\116\1\117\1\120\2\25\1\uffff\1\123\1\124\4"+
         "\uffff\2\25\2\uffff\1\25\1\130\1\131\2\uffff";
     static final String DFA5_eofS =
         "\132\uffff";
     static final String DFA5_minS =
-        "\1\45\1\151\1\75\1\145\1\uffff\1\150\2\uffff\1\151\1\146\1\150"+
-        "\1\154\1\157\1\144\1\uffff\1\157\1\uffff\1\151\1\144\3\uffff\1\156"+
+        "\1\45\1\151\1\75\1\145\1\uffff\1\150\2\uffff\1\151\1\146\1\150\1"+
+        "\154\1\157\1\144\1\uffff\1\157\1\uffff\1\151\1\144\3\uffff\1\156"+
         "\1\41\1\162\2\uffff\1\141\2\151\1\160\1\154\2\41\1\145\1\41\1\163"+
         "\2\41\1\156\1\163\1\41\1\143\1\uffff\1\41\1\144\1\164\1\154\2\41"+
         "\2\uffff\1\156\1\uffff\1\145\2\uffff\1\163\1\164\1\uffff\1\164\1"+
@@ -1033,9 +1033,9 @@ public class WhileLexer extends Lexer {
         "\141\1\uffff\1\172\2\145\2\uffff\4\172\1\151\1\143\1\uffff\2\172"+
         "\4\uffff\1\157\1\150\2\uffff\1\156\2\172\2\uffff";
     static final String DFA5_acceptS =
-        "\4\uffff\1\4\1\uffff\1\6\1\7\6\uffff\1\25\1\uffff\1\27\2\uffff"+
-        "\1\33\1\34\1\35\3\uffff\1\11\1\2\20\uffff\1\15\6\uffff\1\12\1\23"+
-        "\1\uffff\1\32\1\uffff\1\17\1\20\2\uffff\1\31\2\uffff\1\21\3\uffff"+
+        "\4\uffff\1\4\1\uffff\1\6\1\7\6\uffff\1\25\1\uffff\1\27\2\uffff\1"+
+        "\33\1\34\1\35\3\uffff\1\11\1\2\20\uffff\1\15\6\uffff\1\12\1\23\1"+
+        "\uffff\1\32\1\uffff\1\17\1\20\2\uffff\1\31\2\uffff\1\21\3\uffff"+
         "\1\10\1\24\6\uffff\1\3\2\uffff\1\13\1\14\1\26\1\30\2\uffff\1\5\1"+
         "\16\3\uffff\1\22\1\1";
     static final String DFA5_specialS =
@@ -1095,8 +1095,8 @@ public class WhileLexer extends Lexer {
             "\25",
             "\1\74",
             "",
-            "\1\25\16\uffff\12\25\5\uffff\1\25\1\uffff\32\25\6\uffff\4"+
-            "\25\1\75\25\25",
+            "\1\25\16\uffff\12\25\5\uffff\1\25\1\uffff\32\25\6\uffff\4\25"+
+            "\1\75\25\25",
             "\1\77",
             "\1\100",
             "\1\101",

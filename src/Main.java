@@ -4,7 +4,7 @@ import org.antlr.runtime.tree.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Specify the input file containing your While program
-        ANTLRFileStream input = new ANTLRFileStream("Projet_TLC/Grammar/output/__Test___input.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Grammar/output/__Test___input.txt");
 
         // Create the lexer and parser
         WhileLexer lexer = new WhileLexer(input);

@@ -1,0 +1,34 @@
+# Descriptions des Tests While
+
+## Test Function True
+
+Cette fonction démontre l'utilisation d'une condition dans le langage While. Elle initialise "Result" à "nil" et utilise une condition pour attribuer soit "nil" soit "az" à "Result". Le résultat final est écrit.
+
+## Test Function AddOne
+
+Cette fonction prend un entier en entrée (X) et ajoute l'arbre correspondant à la valeur 1 au résultat (Y), puis écrit le résultat.
+
+## Test Function PrintRange
+
+Cette fonction utilise une boucle "for" pour répéter N fois. Elle attribue la valeur courante de N à "Result" et écrit le résultat.
+
+
+
+## Tests de Rejet
+
+### Test Function InvalidVariable
+
+Cette fonction tente de déclarer une variable invalide, ce qui devrait être rejeté.
+
+### Test Function UndeclaredVariable
+
+Cette fonction utilise une variable non déclarée, ce qui devrait être rejeté.
+
+### Test Function InvalidOperation
+
+Cette fonction tente d'effectuer une opération non valide, ce qui devrait être rejeté.
+
+### Test Function TypeError
+
+Cette fonction crée une erreur de type en attribuant une chaîne à "Result" dans une branche et un entier dans l'autre branche de la condition "if", ce qui devrait être rejeté.
+

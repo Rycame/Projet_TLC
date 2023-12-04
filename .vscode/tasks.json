@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "antlr4",
+        "type": "shell",
+        "command": "antlr4",
+        "args": [
+          "-visitor",
+          "-Dlanguage=Java",
+          "While.g"  // Remplacez "While.g" par le nom de votre fichier de grammaire
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
+  
