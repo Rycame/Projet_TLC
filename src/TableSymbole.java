@@ -16,24 +16,56 @@ public class TableSymbole {
     }
 
     // Récupérer la valeur associée à un symbole
-    public Object obtenirValeur(String nom) {
+    public CommonTree obtenirArbreFonction(String nom) {
         for (Fonction entry : fonction) {
             if (entry.getNom().equals(nom)) {
-                return entry.getValeur();
+                return entry.getArbre();
             }
         }
         return null;
     }
 
+    public CommonTree obtenirArbreSymbole(String nom) {
+        for (Fonction entry : fonction) {
+            List<Symbole> parametre = entry.getParametre();
+            for (Symbole param : parametre){
+                if (param.getNom() == nom){
+                    return param.getArbre();
+                }
+            }
+            List<Symbole> variable = entry.getVariable();
+            for (Symbole var : variable){
+                if (var.getNom() == nom){
+                    return var.getArbre();
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean existeFonction(String nom) {
+        for (Fonction entry : fonction) {
+            if (entry.getNom() == nom){
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Vérifier si un symbole existe dans la table
     public boolean existeSymbole(String nom) {
         for (Fonction entry : fonction) {
-            if (entry.getNom().equals(nom)) {
-                return true;
+            List<Symbole> parametre = entry.getParametre();
+            for (Symbole param : parametre){
+                if (param.getNom() == nom){
+                    return true;
+                }
             }
-            TableSymbole symbole = entry.getSymbole();
-            if (symbole != null){
-                symbole.existeSymbole(nom);;
+            List<Symbole> variable = entry.getVariable();
+            for (Symbole var : variable){
+                if (var.getNom() == nom){
+                    return true;
+                }
             }
         }
         return false;
@@ -43,11 +75,17 @@ public class TableSymbole {
     public void afficherTable() {
         System.out.println("Table des Symboles:");
         for (Fonction entry : fonction) {
-            TableSymbole symbole = entry.getSymbole();
-            if (symbole != null){
-                symbole.afficherTable();
+            System.out.println(entry.getNom());
+            System.out.println("parametre :");
+            List<Symbole> parametre = entry.getParametre();
+            for (Symbole param : parametre){
+                System.out.println(param.getNom());
             }
-            System.out.println(entry.getNom() + " : " + entry.getValeur());
+            System.out.println("variable : ");
+            List<Symbole> variable = entry.getVariable();
+            for (Symbole var : variable){
+                System.out.println(var.getNom());
+            }
         }
     }
 }
