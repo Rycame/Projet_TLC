@@ -1,58 +1,53 @@
 import java.util.ArrayList;
 import java.util.List;
+import org.antlr.runtime.tree.CommonTree;
 
 public class TableSymbole {
-    private List<TableDesSymbolesEntry> symboles;
-    private TableSymbole contexteEnglobant;
+    private List<Fonction> fonction;
+    
 
     public TableSymbole() {
-        symboles = new ArrayList<>();
-        contexteEnglobant = null;
-    }
-
-    public TableSymbole(TableSymbole contexteEnglobant) {
-        symboles = new ArrayList<>();
-        this.contexteEnglobant = contexteEnglobant;
+        fonction = new ArrayList<>();
     }
 
     // Ajouter un symbole à la table
-    public void ajouterSymbole(String nom, Object valeur) {
-        symboles.add(new TableDesSymbolesEntry(nom, valeur));
+    public void ajouterSymbole(String nom,CommonTree arbre) {
+        fonction.add(new Fonction(nom, arbre));
     }
 
     // Récupérer la valeur associée à un symbole
     public Object obtenirValeur(String nom) {
-        for (TableDesSymbolesEntry entry : symboles) {
+        for (Fonction entry : fonction) {
             if (entry.getNom().equals(nom)) {
                 return entry.getValeur();
             }
-        }
-        if (contexteEnglobant != null) {
-            // Chercher dans le contexte englobant si le symbole n'est pas trouvé ici
-            return contexteEnglobant.obtenirValeur(nom);
         }
         return null;
     }
 
     // Vérifier si un symbole existe dans la table
     public boolean existeSymbole(String nom) {
-        for (TableDesSymbolesEntry entry : symboles) {
+        for (Fonction entry : fonction) {
             if (entry.getNom().equals(nom)) {
                 return true;
             }
+            TableSymbole symbole = entry.getSymbole();
+            if (symbole != null){
+                symbole.existeSymbole(nom);;
+            }
         }
-        return (contexteEnglobant != null && contexteEnglobant.existeSymbole(nom));
+        return false;
     }
 
     // Afficher tous les symboles de la table
     public void afficherTable() {
         System.out.println("Table des Symboles:");
-        for (TableDesSymbolesEntry entry : symboles) {
+        for (Fonction entry : fonction) {
+            TableSymbole symbole = entry.getSymbole();
+            if (symbole != null){
+                symbole.afficherTable();
+            }
             System.out.println(entry.getNom() + " : " + entry.getValeur());
-        }
-        if (contexteEnglobant != null) {
-            System.out.println("Contexte Englobant:");
-            contexteEnglobant.afficherTable();
         }
     }
 }
