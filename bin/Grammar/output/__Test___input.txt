@@ -1,0 +1,12 @@
+function true :
+read
+%
+ Result := nil;
+
+ if Result=?nil then 
+   Result := nil
+ else
+   Result := az
+ fi 
+%
+write Result

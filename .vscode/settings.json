@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/theo/Téléchargements/antlr-3.5.3-complete-no-st3.jar"
+    ]
+}
