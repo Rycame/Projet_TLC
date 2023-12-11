@@ -2,6 +2,7 @@ function add :
   read Op1, Op2
 %
   Result := Op1 ;
+  Op1 := Result;
   for Op2 do
     Result := ( cons nil Result )
   od

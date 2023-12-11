@@ -7,8 +7,8 @@ public class Fonction extends Symbole {
     private List<Symbole> parametres;
     private List<Symbole> variables;
 
-    public Fonction(String nom,CommonTree arbre) {
-        super(nom,arbre);
+    public Fonction(String nom, CommonTree arbre) {
+        super(nom, arbre);
         parametres = new ArrayList<Symbole>();
         variables = new ArrayList<Symbole>();
     }
@@ -21,11 +21,32 @@ public class Fonction extends Symbole {
         return parametres;
     }
 
-    public void addVariable(Symbole var){
+    public void addVariable(Symbole var) {
         variables.add(var);
     }
 
-    public void addParametre(Symbole param){
+    public void addParametre(Symbole param) {
         parametres.add(param);
+    }
+
+
+    public boolean existsParametre(String name) {
+        for (Symbole parameter : this.parametres) {
+            if (parameter.getNom().equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean existsVariable(String name) {
+        for (Symbole variable : this.variables) {
+            if (variable.getNom().equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

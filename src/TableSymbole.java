@@ -11,7 +11,7 @@ public class TableSymbole {
         fonctions = new ArrayList<>();
     }
 
-    public TableSymbole(CommonTree ast) {
+    public TableSymbole(CommonTree ast) throws Exception {
         this.fonctions = new ArrayList<>();
 
         if (ast != null) {
@@ -128,7 +128,7 @@ public class TableSymbole {
         Parcours l'AST complet, identifie uniquement les fonctions
         et les ajoute à la table des symboles.
      */
-    private void parcoursFonctions(CommonTree ast) {
+    private void parcoursFonctions(CommonTree ast) throws Exception {
         if (ast != null) {
             for (int i = 0; i < ast.getChildCount(); i++) {
                 CommonTree child = (CommonTree) ast.getChild(i);
@@ -147,14 +147,18 @@ public class TableSymbole {
         Parcours l'AST d'une fonction, identifie uniquement les paramètres
         et les ajoute à la fonction.
      */
-    private void parcoursParametres(CommonTree ast, Fonction fonction) {
+    private void parcoursParametres(CommonTree ast, Fonction fonction) throws Exception {
         if (ast != null) {
             for (int i = 0; i < ast.getChildCount(); i++) {
                 CommonTree child = (CommonTree) ast.getChild(i);
                 if (child.getType() == WhileParser.INPUTS) {
                     for (int j = 0; j < child.getChildCount(); j++) {
                         Symbole symbole = new Symbole(child.getChild(j).getText(), null);
-                        fonction.addParametre(symbole);
+                        if (!fonction.existsParametre(symbole.getNom())) {
+                            fonction.addParametre(symbole);
+                        } else {
+                            throw new Exception("Fonction " + fonction.getNom() + ": Deux paramètres ont le même nom.");
+                        }
                     }
                 }
             }
@@ -173,14 +177,14 @@ public class TableSymbole {
                     List<String> variables = this.getVarsFromArbre(child);
                     for (String variable : variables) {
                         Symbole symbole = new Symbole(variable, null);
-                        if (!existeSymbole(symbole.getNom())) {
+                        if (!fonction.existsParametre(symbole.getNom()) && !fonction.existsVariable(symbole.getNom())) {
                             fonction.addVariable(symbole);
                         }
                     }
                 } else if (child.getType() == WhileParser.OUTPUTS) {
                     for (int j = 0; j < child.getChildCount(); j++) {
                         Symbole symbole = new Symbole(child.getChild(j).getText(), null);
-                        if (!existeSymbole(symbole.getNom())) {
+                        if (!fonction.existsParametre(symbole.getNom()) && !fonction.existsVariable(symbole.getNom())) {
                             fonction.addVariable(symbole);
                         }
                     }
