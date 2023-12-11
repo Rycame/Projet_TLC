@@ -5,7 +5,7 @@ import org.antlr.runtime.tree.CommonTree;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Le fichier contenant le programme While
-        ANTLRFileStream input = new ANTLRFileStream("src/__Test___input.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Projet_TLC/test/Test.while");
 
         // Créer le Lexer et le Parser
         WhileLexer lexer = new WhileLexer(input);
