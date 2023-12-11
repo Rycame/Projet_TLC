@@ -6,11 +6,13 @@ import java.util.List;
 public class Fonction extends Symbole {
     private List<Symbole> parametres;
     private List<Symbole> variables;
+    private List<Symbole> outputs;
 
     public Fonction(String nom, CommonTree arbre) {
         super(nom, arbre);
         parametres = new ArrayList<Symbole>();
         variables = new ArrayList<Symbole>();
+        outputs = new ArrayList<Symbole>();
     }
 
     public List<Symbole> getVariables() {
@@ -21,12 +23,20 @@ public class Fonction extends Symbole {
         return parametres;
     }
 
+    public List<Symbole> getOutputs() {
+        return outputs;
+    }
+
     public void addVariable(Symbole var) {
         variables.add(var);
     }
 
     public void addParametre(Symbole param) {
         parametres.add(param);
+    }
+
+    public void addOutput(Symbole output) {
+        outputs.add(output);
     }
 
 

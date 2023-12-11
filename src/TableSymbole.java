@@ -109,6 +109,11 @@ public class TableSymbole {
             for (Symbole variable : variables) {
                 System.out.print(variable.getNom() + ", ");
             }
+            System.out.print("\n Outputs: ");
+            List<Symbole> outputs = entry.getOutputs();
+            for (Symbole output : outputs) {
+                System.out.print(output.getNom() + ", ");
+            }
             System.out.println("\n++++++++++");
         }
     }
@@ -138,6 +143,7 @@ public class TableSymbole {
 
                     parcoursParametres(child, fonction);
                     parcoursVariables(child, fonction);
+                    parcoursOutputs(child, fonction);
                 }
             }
         }
@@ -181,12 +187,22 @@ public class TableSymbole {
                             fonction.addVariable(symbole);
                         }
                     }
-                } else if (child.getType() == WhileParser.OUTPUTS) {
+                }
+            }
+        }
+    }
+
+    /*
+       Parcours l'AST d'une fonction, identifie les variables de sorties et les ajoute à la fonction.
+    */
+    private void parcoursOutputs(CommonTree ast, Fonction fonction) {
+        if (ast != null) {
+            for (int i = 0; i < ast.getChildCount(); i++) {
+                CommonTree child = (CommonTree) ast.getChild(i);
+                if (child.getType() == WhileParser.OUTPUTS) {
                     for (int j = 0; j < child.getChildCount(); j++) {
                         Symbole symbole = new Symbole(child.getChild(j).getText(), null);
-                        if (!fonction.existsParametre(symbole.getNom()) && !fonction.existsVariable(symbole.getNom())) {
-                            fonction.addVariable(symbole);
-                        }
+                        fonction.addOutput(symbole);
                     }
                 }
             }
