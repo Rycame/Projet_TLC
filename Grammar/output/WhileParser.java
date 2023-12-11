@@ -1,14 +1,16 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g 2023-11-27 15:58:14
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g 2023-12-11 09:46:46
 
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.antlr.runtime.debug.*;
+import java.io.IOException;
 
 import org.antlr.runtime.tree.*;
 
-public class WhileParser extends Parser {
+public class WhileParser extends DebugParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "EQUAL", "FUNCTION", "PROGRAM", "INPUTS", "OUTPUTS", "COMMANDS", "IF", "WHILE", "FOR", "FOREACH", "NOP", "NIL", "CONS", "LIST", "HD", "TL", "SYMB", "VARS", "EXPRS", "CONDITION", "NOM", "THEN", "ELSE", "Variable", "Symbol", "'function'", "':'", "'read'", "'%'", "'write'", "','", "';'", "'nop'", "':='", "'if'", "'then'", "'else'", "'fi'", "'while'", "'do'", "'od'", "'for'", "'foreach'", "'in'", "'nil'", "'('", "'cons'", "')'", "'list'", "'hd'", "'tl'", "'=?'"
     };
@@ -69,26 +71,68 @@ public class WhileParser extends Parser {
     // delegates
     // delegators
 
+    public static final String[] ruleNames = new String[] {
+        "invalidRule", "commandFor", "inputSub", "output", "exprBase3", 
+        "commandNop", "commands", "input", "exprs", "program", "vars", "function", 
+        "lexpr", "command", "exprBase4", "definition", "commandForeach", 
+        "commandWhile", "exprBase", "commandEqual", "exprBase1", "expression", 
+        "commandIf", "exprBase2"
+    };
+    public static final boolean[] decisionCanBacktrack = new boolean[] {
+        false, // invalid decision
+        false, false, false, false, false, false, false, false, false, 
+            false, false, false, false, false, false
+    };
 
+     
+        public int ruleLevel = 0;
+        public int getRuleLevel() { return ruleLevel; }
+        public void incRuleLevel() { ruleLevel++; }
+        public void decRuleLevel() { ruleLevel--; }
         public WhileParser(TokenStream input) {
-            this(input, new RecognizerSharedState());
+            this(input, DebugEventSocketProxy.DEFAULT_DEBUGGER_PORT, new RecognizerSharedState());
         }
-        public WhileParser(TokenStream input, RecognizerSharedState state) {
+        public WhileParser(TokenStream input, int port, RecognizerSharedState state) {
             super(input, state);
-             
+            DebugEventSocketProxy proxy =
+                new DebugEventSocketProxy(this,port,adaptor);
+            setDebugListener(proxy);
+            setTokenStream(new DebugTokenStream(input,proxy));
+            try {
+                proxy.handshake();
+            }
+            catch (IOException ioe) {
+                reportError(ioe);
+            }
+            TreeAdaptor adap = new CommonTreeAdaptor();
+            setTreeAdaptor(adap);
+            proxy.setTreeAdaptor(adap);
         }
-        
-    protected TreeAdaptor adaptor = new CommonTreeAdaptor();
+    public WhileParser(TokenStream input, DebugEventListener dbg) {
+        super(input, dbg);
 
+         
+        TreeAdaptor adap = new CommonTreeAdaptor();
+        setTreeAdaptor(adap);
+
+    }
+    protected boolean evalPredicate(boolean result, String predicate) {
+        dbg.semanticPredicate(result, predicate);
+        return result;
+    }
+
+    protected DebugTreeAdaptor adaptor;
     public void setTreeAdaptor(TreeAdaptor adaptor) {
-        this.adaptor = adaptor;
+        this.adaptor = new DebugTreeAdaptor(dbg,adaptor);
+
     }
     public TreeAdaptor getTreeAdaptor() {
         return adaptor;
     }
 
+
     public String[] getTokenNames() { return WhileParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g"; }
+    public String getGrammarFileName() { return "C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g"; }
 
 
     public static class program_return extends ParserRuleReturnScope {
@@ -97,7 +141,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "program"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:39:1: program : function ( program )? -> ^( PROGRAM ( function )+ ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:39:1: program : function ( program )? -> ^( PROGRAM ( function )+ ) ;
     public final WhileParser.program_return program() throws RecognitionException {
         WhileParser.program_return retval = new WhileParser.program_return();
         retval.start = input.LT(1);
@@ -111,27 +155,44 @@ public class WhileParser extends Parser {
 
         RewriteRuleSubtreeStream stream_function=new RewriteRuleSubtreeStream(adaptor,"rule function");
         RewriteRuleSubtreeStream stream_program=new RewriteRuleSubtreeStream(adaptor,"rule program");
+        try { dbg.enterRule(getGrammarFileName(), "program");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(39, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:40:2: ( function ( program )? -> ^( PROGRAM ( function )+ ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:40:4: function ( program )?
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:40:2: ( function ( program )? -> ^( PROGRAM ( function )+ ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:40:4: function ( program )?
             {
+            dbg.location(40,4);
             pushFollow(FOLLOW_function_in_program188);
             function1=function();
 
             state._fsp--;
 
             stream_function.add(function1.getTree());
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:40:13: ( program )?
+            dbg.location(40,13);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:40:13: ( program )?
             int alt1=2;
+            try { dbg.enterSubRule(1);
+            try { dbg.enterDecision(1, decisionCanBacktrack[1]);
+
             int LA1_0 = input.LA(1);
 
             if ( (LA1_0==29) ) {
                 alt1=1;
             }
+            } finally {dbg.exitDecision(1);}
+
             switch (alt1) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:40:13: program
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:40:13: program
                     {
+                    dbg.location(40,13);
                     pushFollow(FOLLOW_program_in_program190);
                     program2=program();
 
@@ -143,6 +204,7 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(1);}
 
 
 
@@ -159,15 +221,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 40:22: -> ^( PROGRAM ( function )+ )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:40:25: ^( PROGRAM ( function )+ )
+                dbg.location(40,25);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:40:25: ^( PROGRAM ( function )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(40,27);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PROGRAM, "PROGRAM"), root_1);
 
+                dbg.location(40,35);
                 if ( !(stream_function.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_function.hasNext() ) {
+                    dbg.location(40,35);
                     adaptor.addChild(root_1, stream_function.nextTree());
 
                 }
@@ -195,6 +261,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(40, 45);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "program");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "program"
@@ -205,7 +280,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "function"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:42:1: function : 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:42:1: function : 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) ;
     public final WhileParser.function_return function() throws RecognitionException {
         WhileParser.function_return retval = new WhileParser.function_return();
         retval.start = input.LT(1);
@@ -225,19 +300,30 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_29=new RewriteRuleTokenStream(adaptor,"token 29");
         RewriteRuleTokenStream stream_30=new RewriteRuleTokenStream(adaptor,"token 30");
         RewriteRuleSubtreeStream stream_definition=new RewriteRuleSubtreeStream(adaptor,"rule definition");
+        try { dbg.enterRule(getGrammarFileName(), "function");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(42, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:43:2: ( 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:43:4: 'function' Symbol ':' definition
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:43:2: ( 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:43:4: 'function' Symbol ':' definition
             {
+            dbg.location(43,4);
             string_literal3=(Token)match(input,29,FOLLOW_29_in_function210);  
             stream_29.add(string_literal3);
 
+            dbg.location(43,15);
             Symbol4=(Token)match(input,Symbol,FOLLOW_Symbol_in_function212);  
             stream_Symbol.add(Symbol4);
 
+            dbg.location(43,22);
             char_literal5=(Token)match(input,30,FOLLOW_30_in_function214);  
             stream_30.add(char_literal5);
 
+            dbg.location(43,26);
             pushFollow(FOLLOW_definition_in_function216);
             definition6=definition();
 
@@ -247,7 +333,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: definition, Symbol
+            // elements: Symbol, definition
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -259,20 +345,26 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 43:37: -> ^( FUNCTION ^( NOM Symbol ) definition )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:43:40: ^( FUNCTION ^( NOM Symbol ) definition )
+                dbg.location(43,40);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:43:40: ^( FUNCTION ^( NOM Symbol ) definition )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(43,42);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTION, "FUNCTION"), root_1);
 
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:43:51: ^( NOM Symbol )
+                dbg.location(43,51);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:43:51: ^( NOM Symbol )
                 {
                 Object root_2 = (Object)adaptor.nil();
+                dbg.location(43,53);
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(NOM, "NOM"), root_2);
 
+                dbg.location(43,57);
                 adaptor.addChild(root_2, stream_Symbol.nextNode());
 
                 adaptor.addChild(root_1, root_2);
                 }
+                dbg.location(43,65);
                 adaptor.addChild(root_1, stream_definition.nextTree());
 
                 adaptor.addChild(root_0, root_1);
@@ -297,6 +389,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(43, 76);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "function");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "function"
@@ -307,7 +408,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "definition"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:45:1: definition : 'read' input '%' commands '%' 'write' output -> input commands output ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:45:1: definition : 'read' input '%' commands '%' 'write' output -> input commands output ;
     public final WhileParser.definition_return definition() throws RecognitionException {
         WhileParser.definition_return retval = new WhileParser.definition_return();
         retval.start = input.LT(1);
@@ -335,34 +436,48 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_output=new RewriteRuleSubtreeStream(adaptor,"rule output");
         RewriteRuleSubtreeStream stream_input=new RewriteRuleSubtreeStream(adaptor,"rule input");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
+        try { dbg.enterRule(getGrammarFileName(), "definition");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(45, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:46:2: ( 'read' input '%' commands '%' 'write' output -> input commands output )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:46:4: 'read' input '%' commands '%' 'write' output
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:46:2: ( 'read' input '%' commands '%' 'write' output -> input commands output )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:46:4: 'read' input '%' commands '%' 'write' output
             {
+            dbg.location(46,4);
             string_literal7=(Token)match(input,31,FOLLOW_31_in_definition240);  
             stream_31.add(string_literal7);
 
+            dbg.location(46,11);
             pushFollow(FOLLOW_input_in_definition242);
             input8=input();
 
             state._fsp--;
 
             stream_input.add(input8.getTree());
+            dbg.location(46,17);
             char_literal9=(Token)match(input,32,FOLLOW_32_in_definition244);  
             stream_32.add(char_literal9);
 
+            dbg.location(46,21);
             pushFollow(FOLLOW_commands_in_definition246);
             commands10=commands();
 
             state._fsp--;
 
             stream_commands.add(commands10.getTree());
+            dbg.location(46,30);
             char_literal11=(Token)match(input,32,FOLLOW_32_in_definition248);  
             stream_32.add(char_literal11);
 
+            dbg.location(46,34);
             string_literal12=(Token)match(input,33,FOLLOW_33_in_definition250);  
             stream_33.add(string_literal12);
 
+            dbg.location(46,42);
             pushFollow(FOLLOW_output_in_definition252);
             output13=output();
 
@@ -384,8 +499,11 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 46:49: -> input commands output
             {
+                dbg.location(46,52);
                 adaptor.addChild(root_0, stream_input.nextTree());
+                dbg.location(46,58);
                 adaptor.addChild(root_0, stream_commands.nextTree());
+                dbg.location(46,67);
                 adaptor.addChild(root_0, stream_output.nextTree());
 
             }
@@ -407,6 +525,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(46, 73);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "definition");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "definition"
@@ -417,7 +544,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "input"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:48:1: input : ( inputSub -> inputSub | -> ^( INPUTS ) );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:48:1: input : ( inputSub -> inputSub | -> ^( INPUTS ) );
     public final WhileParser.input_return input() throws RecognitionException {
         WhileParser.input_return retval = new WhileParser.input_return();
         retval.start = input.LT(1);
@@ -428,9 +555,16 @@ public class WhileParser extends Parser {
 
 
         RewriteRuleSubtreeStream stream_inputSub=new RewriteRuleSubtreeStream(adaptor,"rule inputSub");
+        try { dbg.enterRule(getGrammarFileName(), "input");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(48, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:49:2: ( inputSub -> inputSub | -> ^( INPUTS ) )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:49:2: ( inputSub -> inputSub | -> ^( INPUTS ) )
             int alt2=2;
+            try { dbg.enterDecision(2, decisionCanBacktrack[2]);
+
             int LA2_0 = input.LA(1);
 
             if ( (LA2_0==Variable) ) {
@@ -443,12 +577,18 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
+            } finally {dbg.exitDecision(2);}
+
             switch (alt2) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:49:4: inputSub
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:49:4: inputSub
                     {
+                    dbg.location(49,4);
                     pushFollow(FOLLOW_inputSub_in_input271);
                     inputSub14=inputSub();
 
@@ -470,6 +610,7 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 49:13: -> inputSub
                     {
+                        dbg.location(49,16);
                         adaptor.addChild(root_0, stream_inputSub.nextTree());
 
                     }
@@ -478,7 +619,9 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:49:27: 
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:49:27: 
                     {
 
                     // AST REWRITE
@@ -494,9 +637,11 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 49:27: -> ^( INPUTS )
                     {
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:49:30: ^( INPUTS )
+                        dbg.location(49,30);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:49:30: ^( INPUTS )
                         {
                         Object root_1 = (Object)adaptor.nil();
+                        dbg.location(49,32);
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INPUTS, "INPUTS"), root_1);
 
                         adaptor.addChild(root_0, root_1);
@@ -523,6 +668,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(49, 39);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "input");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "input"
@@ -533,7 +687,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "inputSub"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:52:1: inputSub : Variable ( ',' inputSub )? -> ^( INPUTS ( Variable )* ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:52:1: inputSub : Variable ( ',' inputSub )? -> ^( INPUTS ( Variable )* ) ;
     public final WhileParser.inputSub_return inputSub() throws RecognitionException {
         WhileParser.inputSub_return retval = new WhileParser.inputSub_return();
         retval.start = input.LT(1);
@@ -550,27 +704,45 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
         RewriteRuleSubtreeStream stream_inputSub=new RewriteRuleSubtreeStream(adaptor,"rule inputSub");
+        try { dbg.enterRule(getGrammarFileName(), "inputSub");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(52, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:2: ( Variable ( ',' inputSub )? -> ^( INPUTS ( Variable )* ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:4: Variable ( ',' inputSub )?
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:2: ( Variable ( ',' inputSub )? -> ^( INPUTS ( Variable )* ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:4: Variable ( ',' inputSub )?
             {
+            dbg.location(53,4);
             Variable15=(Token)match(input,Variable,FOLLOW_Variable_in_inputSub294);  
             stream_Variable.add(Variable15);
 
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:13: ( ',' inputSub )?
+            dbg.location(53,13);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:13: ( ',' inputSub )?
             int alt3=2;
+            try { dbg.enterSubRule(3);
+            try { dbg.enterDecision(3, decisionCanBacktrack[3]);
+
             int LA3_0 = input.LA(1);
 
             if ( (LA3_0==34) ) {
                 alt3=1;
             }
+            } finally {dbg.exitDecision(3);}
+
             switch (alt3) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:14: ',' inputSub
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:14: ',' inputSub
                     {
+                    dbg.location(53,14);
                     char_literal16=(Token)match(input,34,FOLLOW_34_in_inputSub297);  
                     stream_34.add(char_literal16);
 
+                    dbg.location(53,18);
                     pushFollow(FOLLOW_inputSub_in_inputSub299);
                     inputSub17=inputSub();
 
@@ -582,6 +754,7 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(3);}
 
 
 
@@ -598,13 +771,17 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 53:29: -> ^( INPUTS ( Variable )* )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:32: ^( INPUTS ( Variable )* )
+                dbg.location(53,32);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:32: ^( INPUTS ( Variable )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(53,34);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INPUTS, "INPUTS"), root_1);
 
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:53:41: ( Variable )*
+                dbg.location(53,41);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:53:41: ( Variable )*
                 while ( stream_Variable.hasNext() ) {
+                    dbg.location(53,41);
                     adaptor.addChild(root_1, stream_Variable.nextNode());
 
                 }
@@ -632,6 +809,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(53, 51);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "inputSub");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "inputSub"
@@ -642,7 +828,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "output"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:55:1: output : Variable ( ',' output )? -> ^( OUTPUTS ( Variable )+ ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:55:1: output : Variable ( ',' output )? -> ^( OUTPUTS ( Variable )+ ) ;
     public final WhileParser.output_return output() throws RecognitionException {
         WhileParser.output_return retval = new WhileParser.output_return();
         retval.start = input.LT(1);
@@ -659,27 +845,45 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
         RewriteRuleSubtreeStream stream_output=new RewriteRuleSubtreeStream(adaptor,"rule output");
+        try { dbg.enterRule(getGrammarFileName(), "output");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(55, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:56:2: ( Variable ( ',' output )? -> ^( OUTPUTS ( Variable )+ ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:56:4: Variable ( ',' output )?
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:56:2: ( Variable ( ',' output )? -> ^( OUTPUTS ( Variable )+ ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:56:4: Variable ( ',' output )?
             {
+            dbg.location(56,4);
             Variable18=(Token)match(input,Variable,FOLLOW_Variable_in_output321);  
             stream_Variable.add(Variable18);
 
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:56:13: ( ',' output )?
+            dbg.location(56,13);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:56:13: ( ',' output )?
             int alt4=2;
+            try { dbg.enterSubRule(4);
+            try { dbg.enterDecision(4, decisionCanBacktrack[4]);
+
             int LA4_0 = input.LA(1);
 
             if ( (LA4_0==34) ) {
                 alt4=1;
             }
+            } finally {dbg.exitDecision(4);}
+
             switch (alt4) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:56:14: ',' output
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:56:14: ',' output
                     {
+                    dbg.location(56,14);
                     char_literal19=(Token)match(input,34,FOLLOW_34_in_output324);  
                     stream_34.add(char_literal19);
 
+                    dbg.location(56,18);
                     pushFollow(FOLLOW_output_in_output326);
                     output20=output();
 
@@ -691,6 +895,7 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(4);}
 
 
 
@@ -707,15 +912,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 56:27: -> ^( OUTPUTS ( Variable )+ )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:56:30: ^( OUTPUTS ( Variable )+ )
+                dbg.location(56,30);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:56:30: ^( OUTPUTS ( Variable )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(56,32);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(OUTPUTS, "OUTPUTS"), root_1);
 
+                dbg.location(56,40);
                 if ( !(stream_Variable.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_Variable.hasNext() ) {
+                    dbg.location(56,40);
                     adaptor.addChild(root_1, stream_Variable.nextNode());
 
                 }
@@ -743,6 +952,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(56, 50);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "output");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "output"
@@ -753,7 +971,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commands"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:58:1: commands : command ( ';' command )* -> ^( COMMANDS ( command )+ ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:58:1: commands : command ( ';' command )* -> ^( COMMANDS ( command )+ ) ;
     public final WhileParser.commands_return commands() throws RecognitionException {
         WhileParser.commands_return retval = new WhileParser.commands_return();
         retval.start = input.LT(1);
@@ -769,20 +987,33 @@ public class WhileParser extends Parser {
         Object char_literal22_tree=null;
         RewriteRuleTokenStream stream_35=new RewriteRuleTokenStream(adaptor,"token 35");
         RewriteRuleSubtreeStream stream_command=new RewriteRuleSubtreeStream(adaptor,"rule command");
+        try { dbg.enterRule(getGrammarFileName(), "commands");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(58, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:59:2: ( command ( ';' command )* -> ^( COMMANDS ( command )+ ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:59:4: command ( ';' command )*
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:59:2: ( command ( ';' command )* -> ^( COMMANDS ( command )+ ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:59:4: command ( ';' command )*
             {
+            dbg.location(59,4);
             pushFollow(FOLLOW_command_in_commands347);
             command21=command();
 
             state._fsp--;
 
             stream_command.add(command21.getTree());
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:59:12: ( ';' command )*
+            dbg.location(59,12);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:59:12: ( ';' command )*
+            try { dbg.enterSubRule(5);
+
             loop5:
             do {
                 int alt5=2;
+                try { dbg.enterDecision(5, decisionCanBacktrack[5]);
+
                 int LA5_0 = input.LA(1);
 
                 if ( (LA5_0==35) ) {
@@ -790,13 +1021,19 @@ public class WhileParser extends Parser {
                 }
 
 
+                } finally {dbg.exitDecision(5);}
+
                 switch (alt5) {
             	case 1 :
-            	    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:59:13: ';' command
+            	    dbg.enterAlt(1);
+
+            	    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:59:13: ';' command
             	    {
+            	    dbg.location(59,13);
             	    char_literal22=(Token)match(input,35,FOLLOW_35_in_commands350);  
             	    stream_35.add(char_literal22);
 
+            	    dbg.location(59,17);
             	    pushFollow(FOLLOW_command_in_commands352);
             	    command23=command();
 
@@ -811,6 +1048,7 @@ public class WhileParser extends Parser {
             	    break loop5;
                 }
             } while (true);
+            } finally {dbg.exitSubRule(5);}
 
 
 
@@ -827,15 +1065,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 59:27: -> ^( COMMANDS ( command )+ )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:59:30: ^( COMMANDS ( command )+ )
+                dbg.location(59,30);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:59:30: ^( COMMANDS ( command )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(59,32);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(COMMANDS, "COMMANDS"), root_1);
 
+                dbg.location(59,41);
                 if ( !(stream_command.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_command.hasNext() ) {
+                    dbg.location(59,41);
                     adaptor.addChild(root_1, stream_command.nextTree());
 
                 }
@@ -863,6 +1105,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(59, 50);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commands");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commands"
@@ -873,7 +1124,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandNop"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:61:1: commandNop : 'nop' -> NOP ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:61:1: commandNop : 'nop' -> NOP ;
     public final WhileParser.commandNop_return commandNop() throws RecognitionException {
         WhileParser.commandNop_return retval = new WhileParser.commandNop_return();
         retval.start = input.LT(1);
@@ -885,10 +1136,18 @@ public class WhileParser extends Parser {
         Object string_literal24_tree=null;
         RewriteRuleTokenStream stream_36=new RewriteRuleTokenStream(adaptor,"token 36");
 
+        try { dbg.enterRule(getGrammarFileName(), "commandNop");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(61, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:62:2: ( 'nop' -> NOP )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:62:4: 'nop'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:62:2: ( 'nop' -> NOP )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:62:4: 'nop'
             {
+            dbg.location(62,4);
             string_literal24=(Token)match(input,36,FOLLOW_36_in_commandNop374);  
             stream_36.add(string_literal24);
 
@@ -907,6 +1166,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 62:10: -> NOP
             {
+                dbg.location(62,13);
                 adaptor.addChild(root_0, (Object)adaptor.create(NOP, "NOP"));
 
             }
@@ -928,6 +1188,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(62, 16);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandNop");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandNop"
@@ -938,7 +1207,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandEqual"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:64:1: commandEqual : vars ':=' exprs -> ^( EQUAL vars exprs ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:64:1: commandEqual : vars ':=' exprs -> ^( EQUAL vars exprs ) ;
     public final WhileParser.commandEqual_return commandEqual() throws RecognitionException {
         WhileParser.commandEqual_return retval = new WhileParser.commandEqual_return();
         retval.start = input.LT(1);
@@ -955,19 +1224,29 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_37=new RewriteRuleTokenStream(adaptor,"token 37");
         RewriteRuleSubtreeStream stream_exprs=new RewriteRuleSubtreeStream(adaptor,"rule exprs");
         RewriteRuleSubtreeStream stream_vars=new RewriteRuleSubtreeStream(adaptor,"rule vars");
+        try { dbg.enterRule(getGrammarFileName(), "commandEqual");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(64, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:65:2: ( vars ':=' exprs -> ^( EQUAL vars exprs ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:65:4: vars ':=' exprs
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:65:2: ( vars ':=' exprs -> ^( EQUAL vars exprs ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:65:4: vars ':=' exprs
             {
+            dbg.location(65,4);
             pushFollow(FOLLOW_vars_in_commandEqual388);
             vars25=vars();
 
             state._fsp--;
 
             stream_vars.add(vars25.getTree());
+            dbg.location(65,9);
             string_literal26=(Token)match(input,37,FOLLOW_37_in_commandEqual390);  
             stream_37.add(string_literal26);
 
+            dbg.location(65,14);
             pushFollow(FOLLOW_exprs_in_commandEqual392);
             exprs27=exprs();
 
@@ -977,7 +1256,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: vars, exprs
+            // elements: exprs, vars
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -989,12 +1268,16 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 65:20: -> ^( EQUAL vars exprs )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:65:23: ^( EQUAL vars exprs )
+                dbg.location(65,23);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:65:23: ^( EQUAL vars exprs )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(65,25);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EQUAL, "EQUAL"), root_1);
 
+                dbg.location(65,31);
                 adaptor.addChild(root_1, stream_vars.nextTree());
+                dbg.location(65,36);
                 adaptor.addChild(root_1, stream_exprs.nextTree());
 
                 adaptor.addChild(root_0, root_1);
@@ -1019,6 +1302,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(65, 42);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandEqual");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandEqual"
@@ -1029,7 +1321,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandIf"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:67:1: commandIf : 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:67:1: commandIf : 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) ;
     public final WhileParser.commandIf_return commandIf() throws RecognitionException {
         WhileParser.commandIf_return retval = new WhileParser.commandIf_return();
         retval.start = input.LT(1);
@@ -1057,42 +1349,63 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_41=new RewriteRuleTokenStream(adaptor,"token 41");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
+        try { dbg.enterRule(getGrammarFileName(), "commandIf");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(67, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:2: ( 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:4: 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:2: ( 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:4: 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi'
             {
+            dbg.location(69,4);
             string_literal28=(Token)match(input,38,FOLLOW_38_in_commandIf414);  
             stream_38.add(string_literal28);
 
+            dbg.location(69,9);
             pushFollow(FOLLOW_expression_in_commandIf416);
             expression29=expression();
 
             state._fsp--;
 
             stream_expression.add(expression29.getTree());
+            dbg.location(69,20);
             string_literal30=(Token)match(input,39,FOLLOW_39_in_commandIf418);  
             stream_39.add(string_literal30);
 
+            dbg.location(69,29);
             pushFollow(FOLLOW_commands_in_commandIf422);
             c1=commands();
 
             state._fsp--;
 
             stream_commands.add(c1.getTree());
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:39: ( 'else' c2= commands )?
+            dbg.location(69,39);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:39: ( 'else' c2= commands )?
             int alt6=2;
+            try { dbg.enterSubRule(6);
+            try { dbg.enterDecision(6, decisionCanBacktrack[6]);
+
             int LA6_0 = input.LA(1);
 
             if ( (LA6_0==40) ) {
                 alt6=1;
             }
+            } finally {dbg.exitDecision(6);}
+
             switch (alt6) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:40: 'else' c2= commands
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:40: 'else' c2= commands
                     {
+                    dbg.location(69,40);
                     string_literal31=(Token)match(input,40,FOLLOW_40_in_commandIf425);  
                     stream_40.add(string_literal31);
 
+                    dbg.location(69,49);
                     pushFollow(FOLLOW_commands_in_commandIf429);
                     c2=commands();
 
@@ -1104,7 +1417,9 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(6);}
 
+            dbg.location(69,61);
             string_literal32=(Token)match(input,41,FOLLOW_41_in_commandIf433);  
             stream_41.add(string_literal32);
 
@@ -1125,36 +1440,48 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 69:66: -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:69: ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
+                dbg.location(69,69);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:69: ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(69,71);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(IF, "IF"), root_1);
 
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:74: ^( CONDITION expression )
+                dbg.location(69,74);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:74: ^( CONDITION expression )
                 {
                 Object root_2 = (Object)adaptor.nil();
+                dbg.location(69,76);
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(CONDITION, "CONDITION"), root_2);
 
+                dbg.location(69,86);
                 adaptor.addChild(root_2, stream_expression.nextTree());
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:98: ^( THEN $c1)
+                dbg.location(69,98);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:98: ^( THEN $c1)
                 {
                 Object root_2 = (Object)adaptor.nil();
+                dbg.location(69,100);
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(THEN, "THEN"), root_2);
 
+                dbg.location(69,105);
                 adaptor.addChild(root_2, stream_c1.nextTree());
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:110: ( ^( ELSE $c2) )?
+                dbg.location(69,110);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:110: ( ^( ELSE $c2) )?
                 if ( stream_c2.hasNext() ) {
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:69:110: ^( ELSE $c2)
+                    dbg.location(69,110);
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:69:110: ^( ELSE $c2)
                     {
                     Object root_2 = (Object)adaptor.nil();
+                    dbg.location(69,112);
                     root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(ELSE, "ELSE"), root_2);
 
+                    dbg.location(69,117);
                     adaptor.addChild(root_2, stream_c2.nextTree());
 
                     adaptor.addChild(root_1, root_2);
@@ -1185,6 +1512,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(69, 123);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandIf");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandIf"
@@ -1195,7 +1531,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandWhile"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:72:1: commandWhile : 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:72:1: commandWhile : 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) ;
     public final WhileParser.commandWhile_return commandWhile() throws RecognitionException {
         WhileParser.commandWhile_return retval = new WhileParser.commandWhile_return();
         retval.start = input.LT(1);
@@ -1218,35 +1554,47 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_43=new RewriteRuleTokenStream(adaptor,"token 43");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
+        try { dbg.enterRule(getGrammarFileName(), "commandWhile");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(72, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:73:2: ( 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:73:4: 'while' expression 'do' commands 'od'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:73:2: ( 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:73:4: 'while' expression 'do' commands 'od'
             {
+            dbg.location(73,4);
             string_literal33=(Token)match(input,42,FOLLOW_42_in_commandWhile470);  
             stream_42.add(string_literal33);
 
+            dbg.location(73,12);
             pushFollow(FOLLOW_expression_in_commandWhile472);
             expression34=expression();
 
             state._fsp--;
 
             stream_expression.add(expression34.getTree());
+            dbg.location(73,23);
             string_literal35=(Token)match(input,43,FOLLOW_43_in_commandWhile474);  
             stream_43.add(string_literal35);
 
+            dbg.location(73,28);
             pushFollow(FOLLOW_commands_in_commandWhile476);
             commands36=commands();
 
             state._fsp--;
 
             stream_commands.add(commands36.getTree());
+            dbg.location(73,37);
             string_literal37=(Token)match(input,44,FOLLOW_44_in_commandWhile478);  
             stream_44.add(string_literal37);
 
 
 
             // AST REWRITE
-            // elements: commands, expression
+            // elements: expression, commands
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1258,12 +1606,16 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 73:42: -> ^( WHILE expression commands )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:73:45: ^( WHILE expression commands )
+                dbg.location(73,45);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:73:45: ^( WHILE expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(73,47);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(WHILE, "WHILE"), root_1);
 
+                dbg.location(73,53);
                 adaptor.addChild(root_1, stream_expression.nextTree());
+                dbg.location(73,64);
                 adaptor.addChild(root_1, stream_commands.nextTree());
 
                 adaptor.addChild(root_0, root_1);
@@ -1288,6 +1640,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(73, 73);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandWhile");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandWhile"
@@ -1298,7 +1659,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandFor"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:75:1: commandFor : 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:75:1: commandFor : 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) ;
     public final WhileParser.commandFor_return commandFor() throws RecognitionException {
         WhileParser.commandFor_return retval = new WhileParser.commandFor_return();
         retval.start = input.LT(1);
@@ -1321,28 +1682,40 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_43=new RewriteRuleTokenStream(adaptor,"token 43");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
+        try { dbg.enterRule(getGrammarFileName(), "commandFor");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(75, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:76:2: ( 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:76:4: 'for' expression 'do' commands 'od'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:76:2: ( 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:76:4: 'for' expression 'do' commands 'od'
             {
+            dbg.location(76,4);
             string_literal38=(Token)match(input,45,FOLLOW_45_in_commandFor498);  
             stream_45.add(string_literal38);
 
+            dbg.location(76,10);
             pushFollow(FOLLOW_expression_in_commandFor500);
             expression39=expression();
 
             state._fsp--;
 
             stream_expression.add(expression39.getTree());
+            dbg.location(76,21);
             string_literal40=(Token)match(input,43,FOLLOW_43_in_commandFor502);  
             stream_43.add(string_literal40);
 
+            dbg.location(76,26);
             pushFollow(FOLLOW_commands_in_commandFor504);
             commands41=commands();
 
             state._fsp--;
 
             stream_commands.add(commands41.getTree());
+            dbg.location(76,35);
             string_literal42=(Token)match(input,44,FOLLOW_44_in_commandFor506);  
             stream_44.add(string_literal42);
 
@@ -1361,12 +1734,16 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 76:40: -> ^( FOR expression commands )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:76:43: ^( FOR expression commands )
+                dbg.location(76,43);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:76:43: ^( FOR expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(76,45);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FOR, "FOR"), root_1);
 
+                dbg.location(76,49);
                 adaptor.addChild(root_1, stream_expression.nextTree());
+                dbg.location(76,60);
                 adaptor.addChild(root_1, stream_commands.nextTree());
 
                 adaptor.addChild(root_0, root_1);
@@ -1391,6 +1768,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(76, 69);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandFor");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandFor"
@@ -1401,7 +1787,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandForeach"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:78:1: commandForeach : 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:78:1: commandForeach : 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) ;
     public final WhileParser.commandForeach_return commandForeach() throws RecognitionException {
         WhileParser.commandForeach_return retval = new WhileParser.commandForeach_return();
         retval.start = input.LT(1);
@@ -1430,41 +1816,55 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_43=new RewriteRuleTokenStream(adaptor,"token 43");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
+        try { dbg.enterRule(getGrammarFileName(), "commandForeach");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(78, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:79:2: ( 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:79:4: 'foreach' Variable 'in' expression 'do' commands 'od'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:79:2: ( 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:79:4: 'foreach' Variable 'in' expression 'do' commands 'od'
             {
+            dbg.location(79,4);
             string_literal43=(Token)match(input,46,FOLLOW_46_in_commandForeach526);  
             stream_46.add(string_literal43);
 
+            dbg.location(79,14);
             Variable44=(Token)match(input,Variable,FOLLOW_Variable_in_commandForeach528);  
             stream_Variable.add(Variable44);
 
+            dbg.location(79,23);
             string_literal45=(Token)match(input,47,FOLLOW_47_in_commandForeach530);  
             stream_47.add(string_literal45);
 
+            dbg.location(79,28);
             pushFollow(FOLLOW_expression_in_commandForeach532);
             expression46=expression();
 
             state._fsp--;
 
             stream_expression.add(expression46.getTree());
+            dbg.location(79,39);
             string_literal47=(Token)match(input,43,FOLLOW_43_in_commandForeach534);  
             stream_43.add(string_literal47);
 
+            dbg.location(79,44);
             pushFollow(FOLLOW_commands_in_commandForeach536);
             commands48=commands();
 
             state._fsp--;
 
             stream_commands.add(commands48.getTree());
+            dbg.location(79,53);
             string_literal49=(Token)match(input,44,FOLLOW_44_in_commandForeach538);  
             stream_44.add(string_literal49);
 
 
 
             // AST REWRITE
-            // elements: expression, commands, Variable
+            // elements: Variable, expression, commands
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1476,13 +1876,18 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 79:58: -> ^( FOREACH Variable expression commands )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:79:61: ^( FOREACH Variable expression commands )
+                dbg.location(79,61);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:79:61: ^( FOREACH Variable expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(79,63);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FOREACH, "FOREACH"), root_1);
 
+                dbg.location(79,71);
                 adaptor.addChild(root_1, stream_Variable.nextNode());
+                dbg.location(79,80);
                 adaptor.addChild(root_1, stream_expression.nextTree());
+                dbg.location(79,91);
                 adaptor.addChild(root_1, stream_commands.nextTree());
 
                 adaptor.addChild(root_0, root_1);
@@ -1507,6 +1912,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(79, 100);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "commandForeach");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "commandForeach"
@@ -1517,7 +1931,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "command"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:81:1: command : ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:81:1: command : ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach );
     public final WhileParser.command_return command() throws RecognitionException {
         WhileParser.command_return retval = new WhileParser.command_return();
         retval.start = input.LT(1);
@@ -1538,9 +1952,16 @@ public class WhileParser extends Parser {
 
 
 
+        try { dbg.enterRule(getGrammarFileName(), "command");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(81, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:2: ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:2: ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach )
             int alt7=6;
+            try { dbg.enterDecision(7, decisionCanBacktrack[7]);
+
             switch ( input.LA(1) ) {
             case 36:
                 {
@@ -1576,15 +1997,21 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 7, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
 
+            } finally {dbg.exitDecision(7);}
+
             switch (alt7) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:4: commandNop
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:4: commandNop
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,4);
                     pushFollow(FOLLOW_commandNop_in_command560);
                     commandNop50=commandNop();
 
@@ -1595,10 +2022,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:17: commandEqual
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:17: commandEqual
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,17);
                     pushFollow(FOLLOW_commandEqual_in_command564);
                     commandEqual51=commandEqual();
 
@@ -1609,10 +2039,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:32: commandIf
+                    dbg.enterAlt(3);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:32: commandIf
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,32);
                     pushFollow(FOLLOW_commandIf_in_command568);
                     commandIf52=commandIf();
 
@@ -1623,10 +2056,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:44: commandWhile
+                    dbg.enterAlt(4);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:44: commandWhile
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,44);
                     pushFollow(FOLLOW_commandWhile_in_command572);
                     commandWhile53=commandWhile();
 
@@ -1637,10 +2073,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:59: commandFor
+                    dbg.enterAlt(5);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:59: commandFor
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,59);
                     pushFollow(FOLLOW_commandFor_in_command576);
                     commandFor54=commandFor();
 
@@ -1651,10 +2090,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:82:72: commandForeach
+                    dbg.enterAlt(6);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:82:72: commandForeach
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(82,72);
                     pushFollow(FOLLOW_commandForeach_in_command580);
                     commandForeach55=commandForeach();
 
@@ -1680,6 +2122,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(82, 86);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "command");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "command"
@@ -1690,7 +2141,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "vars"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:84:1: vars : Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:84:1: vars : Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) ;
     public final WhileParser.vars_return vars() throws RecognitionException {
         WhileParser.vars_return retval = new WhileParser.vars_return();
         retval.start = input.LT(1);
@@ -1707,17 +2158,30 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 
+        try { dbg.enterRule(getGrammarFileName(), "vars");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(84, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:85:2: ( Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:85:4: Variable ( ',' Variable )*
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:85:2: ( Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:85:4: Variable ( ',' Variable )*
             {
+            dbg.location(85,4);
             Variable56=(Token)match(input,Variable,FOLLOW_Variable_in_vars590);  
             stream_Variable.add(Variable56);
 
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:85:13: ( ',' Variable )*
+            dbg.location(85,13);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:85:13: ( ',' Variable )*
+            try { dbg.enterSubRule(8);
+
             loop8:
             do {
                 int alt8=2;
+                try { dbg.enterDecision(8, decisionCanBacktrack[8]);
+
                 int LA8_0 = input.LA(1);
 
                 if ( (LA8_0==34) ) {
@@ -1725,13 +2189,19 @@ public class WhileParser extends Parser {
                 }
 
 
+                } finally {dbg.exitDecision(8);}
+
                 switch (alt8) {
             	case 1 :
-            	    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:85:14: ',' Variable
+            	    dbg.enterAlt(1);
+
+            	    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:85:14: ',' Variable
             	    {
+            	    dbg.location(85,14);
             	    char_literal57=(Token)match(input,34,FOLLOW_34_in_vars593);  
             	    stream_34.add(char_literal57);
 
+            	    dbg.location(85,18);
             	    Variable58=(Token)match(input,Variable,FOLLOW_Variable_in_vars595);  
             	    stream_Variable.add(Variable58);
 
@@ -1743,6 +2213,7 @@ public class WhileParser extends Parser {
             	    break loop8;
                 }
             } while (true);
+            } finally {dbg.exitSubRule(8);}
 
 
 
@@ -1759,15 +2230,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 85:29: -> ^( VARS ( Variable )+ )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:85:32: ^( VARS ( Variable )+ )
+                dbg.location(85,32);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:85:32: ^( VARS ( Variable )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(85,34);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARS, "VARS"), root_1);
 
+                dbg.location(85,39);
                 if ( !(stream_Variable.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_Variable.hasNext() ) {
+                    dbg.location(85,39);
                     adaptor.addChild(root_1, stream_Variable.nextNode());
 
                 }
@@ -1795,6 +2270,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(85, 49);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "vars");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "vars"
@@ -1805,7 +2289,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprs"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:87:1: exprs : expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:87:1: exprs : expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) ;
     public final WhileParser.exprs_return exprs() throws RecognitionException {
         WhileParser.exprs_return retval = new WhileParser.exprs_return();
         retval.start = input.LT(1);
@@ -1821,20 +2305,33 @@ public class WhileParser extends Parser {
         Object char_literal60_tree=null;
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
+        try { dbg.enterRule(getGrammarFileName(), "exprs");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(87, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:88:2: ( expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:88:4: expression ( ',' expression )*
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:88:2: ( expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:88:4: expression ( ',' expression )*
             {
+            dbg.location(88,4);
             pushFollow(FOLLOW_expression_in_exprs616);
             expression59=expression();
 
             state._fsp--;
 
             stream_expression.add(expression59.getTree());
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:88:15: ( ',' expression )*
+            dbg.location(88,15);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:88:15: ( ',' expression )*
+            try { dbg.enterSubRule(9);
+
             loop9:
             do {
                 int alt9=2;
+                try { dbg.enterDecision(9, decisionCanBacktrack[9]);
+
                 int LA9_0 = input.LA(1);
 
                 if ( (LA9_0==34) ) {
@@ -1842,13 +2339,19 @@ public class WhileParser extends Parser {
                 }
 
 
+                } finally {dbg.exitDecision(9);}
+
                 switch (alt9) {
             	case 1 :
-            	    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:88:16: ',' expression
+            	    dbg.enterAlt(1);
+
+            	    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:88:16: ',' expression
             	    {
+            	    dbg.location(88,16);
             	    char_literal60=(Token)match(input,34,FOLLOW_34_in_exprs619);  
             	    stream_34.add(char_literal60);
 
+            	    dbg.location(88,20);
             	    pushFollow(FOLLOW_expression_in_exprs621);
             	    expression61=expression();
 
@@ -1863,6 +2366,7 @@ public class WhileParser extends Parser {
             	    break loop9;
                 }
             } while (true);
+            } finally {dbg.exitSubRule(9);}
 
 
 
@@ -1879,15 +2383,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 88:33: -> ^( EXPRS ( expression )+ )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:88:36: ^( EXPRS ( expression )+ )
+                dbg.location(88,36);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:88:36: ^( EXPRS ( expression )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(88,38);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPRS, "EXPRS"), root_1);
 
+                dbg.location(88,44);
                 if ( !(stream_expression.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_expression.hasNext() ) {
+                    dbg.location(88,44);
                     adaptor.addChild(root_1, stream_expression.nextTree());
 
                 }
@@ -1915,6 +2423,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(88, 56);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprs");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprs"
@@ -1925,7 +2442,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase1"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:90:1: exprBase1 : ( 'nil' -> NIL | Variable | Symbol );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:90:1: exprBase1 : ( 'nil' -> NIL | Variable | Symbol );
     public final WhileParser.exprBase1_return exprBase1() throws RecognitionException {
         WhileParser.exprBase1_return retval = new WhileParser.exprBase1_return();
         retval.start = input.LT(1);
@@ -1941,9 +2458,16 @@ public class WhileParser extends Parser {
         Object Symbol64_tree=null;
         RewriteRuleTokenStream stream_48=new RewriteRuleTokenStream(adaptor,"token 48");
 
+        try { dbg.enterRule(getGrammarFileName(), "exprBase1");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(90, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:91:2: ( 'nil' -> NIL | Variable | Symbol )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:91:2: ( 'nil' -> NIL | Variable | Symbol )
             int alt10=3;
+            try { dbg.enterDecision(10, decisionCanBacktrack[10]);
+
             switch ( input.LA(1) ) {
             case 48:
                 {
@@ -1964,13 +2488,19 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 10, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
 
+            } finally {dbg.exitDecision(10);}
+
             switch (alt10) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:91:4: 'nil'
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:91:4: 'nil'
                     {
+                    dbg.location(91,4);
                     string_literal62=(Token)match(input,48,FOLLOW_48_in_exprBase1642);  
                     stream_48.add(string_literal62);
 
@@ -1989,6 +2519,7 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 91:10: -> NIL
                     {
+                        dbg.location(91,13);
                         adaptor.addChild(root_0, (Object)adaptor.create(NIL, "NIL"));
 
                     }
@@ -1997,10 +2528,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:91:19: Variable
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:91:19: Variable
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(91,19);
                     Variable63=(Token)match(input,Variable,FOLLOW_Variable_in_exprBase1650); 
                     Variable63_tree = (Object)adaptor.create(Variable63);
                     adaptor.addChild(root_0, Variable63_tree);
@@ -2009,10 +2543,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:91:30: Symbol
+                    dbg.enterAlt(3);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:91:30: Symbol
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(91,30);
                     Symbol64=(Token)match(input,Symbol,FOLLOW_Symbol_in_exprBase1654); 
                     Symbol64_tree = (Object)adaptor.create(Symbol64);
                     adaptor.addChild(root_0, Symbol64_tree);
@@ -2036,6 +2573,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(91, 36);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprBase1");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprBase1"
@@ -2046,7 +2592,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase2"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:93:1: exprBase2 : ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:93:1: exprBase2 : ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) );
     public final WhileParser.exprBase2_return exprBase2() throws RecognitionException {
         WhileParser.exprBase2_return retval = new WhileParser.exprBase2_return();
         retval.start = input.LT(1);
@@ -2075,9 +2621,16 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
         RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
+        try { dbg.enterRule(getGrammarFileName(), "exprBase2");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(93, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:2: ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:2: ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) )
             int alt11=2;
+            try { dbg.enterDecision(11, decisionCanBacktrack[11]);
+
             int LA11_0 = input.LA(1);
 
             if ( (LA11_0==49) ) {
@@ -2093,6 +2646,7 @@ public class WhileParser extends Parser {
                     NoViableAltException nvae =
                         new NoViableAltException("", 11, 1, input);
 
+                    dbg.recognitionException(nvae);
                     throw nvae;
                 }
             }
@@ -2100,24 +2654,33 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 11, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
+            } finally {dbg.exitDecision(11);}
+
             switch (alt11) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:4: '(' 'cons' lexpr ')'
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:4: '(' 'cons' lexpr ')'
                     {
+                    dbg.location(94,4);
                     char_literal65=(Token)match(input,49,FOLLOW_49_in_exprBase2664);  
                     stream_49.add(char_literal65);
 
+                    dbg.location(94,8);
                     string_literal66=(Token)match(input,50,FOLLOW_50_in_exprBase2666);  
                     stream_50.add(string_literal66);
 
+                    dbg.location(94,15);
                     pushFollow(FOLLOW_lexpr_in_exprBase2668);
                     lexpr67=lexpr();
 
                     state._fsp--;
 
                     stream_lexpr.add(lexpr67.getTree());
+                    dbg.location(94,21);
                     char_literal68=(Token)match(input,51,FOLLOW_51_in_exprBase2670);  
                     stream_51.add(char_literal68);
 
@@ -2136,13 +2699,17 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 94:25: -> ^( CONS ( lexpr )? )
                     {
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:28: ^( CONS ( lexpr )? )
+                        dbg.location(94,28);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:28: ^( CONS ( lexpr )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
+                        dbg.location(94,30);
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(CONS, "CONS"), root_1);
 
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:35: ( lexpr )?
+                        dbg.location(94,35);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:35: ( lexpr )?
                         if ( stream_lexpr.hasNext() ) {
+                            dbg.location(94,35);
                             adaptor.addChild(root_1, stream_lexpr.nextTree());
 
                         }
@@ -2157,20 +2724,26 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:45: '(' 'list' lexpr ')'
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:45: '(' 'list' lexpr ')'
                     {
+                    dbg.location(94,45);
                     char_literal69=(Token)match(input,49,FOLLOW_49_in_exprBase2683);  
                     stream_49.add(char_literal69);
 
+                    dbg.location(94,49);
                     string_literal70=(Token)match(input,52,FOLLOW_52_in_exprBase2685);  
                     stream_52.add(string_literal70);
 
+                    dbg.location(94,56);
                     pushFollow(FOLLOW_lexpr_in_exprBase2687);
                     lexpr71=lexpr();
 
                     state._fsp--;
 
                     stream_lexpr.add(lexpr71.getTree());
+                    dbg.location(94,62);
                     char_literal72=(Token)match(input,51,FOLLOW_51_in_exprBase2689);  
                     stream_51.add(char_literal72);
 
@@ -2189,13 +2762,17 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 94:66: -> ^( LIST ( lexpr )? )
                     {
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:69: ^( LIST ( lexpr )? )
+                        dbg.location(94,69);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:69: ^( LIST ( lexpr )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
+                        dbg.location(94,71);
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LIST, "LIST"), root_1);
 
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:94:76: ( lexpr )?
+                        dbg.location(94,76);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:94:76: ( lexpr )?
                         if ( stream_lexpr.hasNext() ) {
+                            dbg.location(94,76);
                             adaptor.addChild(root_1, stream_lexpr.nextTree());
 
                         }
@@ -2225,6 +2802,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(94, 83);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprBase2");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprBase2"
@@ -2235,7 +2821,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase3"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:96:1: exprBase3 : ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:96:1: exprBase3 : ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) );
     public final WhileParser.exprBase3_return exprBase3() throws RecognitionException {
         WhileParser.exprBase3_return retval = new WhileParser.exprBase3_return();
         retval.start = input.LT(1);
@@ -2264,9 +2850,16 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_53=new RewriteRuleTokenStream(adaptor,"token 53");
         RewriteRuleTokenStream stream_54=new RewriteRuleTokenStream(adaptor,"token 54");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
+        try { dbg.enterRule(getGrammarFileName(), "exprBase3");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(96, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:97:2: ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:97:2: ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) )
             int alt12=2;
+            try { dbg.enterDecision(12, decisionCanBacktrack[12]);
+
             int LA12_0 = input.LA(1);
 
             if ( (LA12_0==49) ) {
@@ -2282,6 +2875,7 @@ public class WhileParser extends Parser {
                     NoViableAltException nvae =
                         new NoViableAltException("", 12, 1, input);
 
+                    dbg.recognitionException(nvae);
                     throw nvae;
                 }
             }
@@ -2289,24 +2883,33 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 12, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
+            } finally {dbg.exitDecision(12);}
+
             switch (alt12) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:97:4: '(' 'hd' exprBase ')'
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:97:4: '(' 'hd' exprBase ')'
                     {
+                    dbg.location(97,4);
                     char_literal73=(Token)match(input,49,FOLLOW_49_in_exprBase3708);  
                     stream_49.add(char_literal73);
 
+                    dbg.location(97,8);
                     string_literal74=(Token)match(input,53,FOLLOW_53_in_exprBase3710);  
                     stream_53.add(string_literal74);
 
+                    dbg.location(97,13);
                     pushFollow(FOLLOW_exprBase_in_exprBase3712);
                     exprBase75=exprBase();
 
                     state._fsp--;
 
                     stream_exprBase.add(exprBase75.getTree());
+                    dbg.location(97,22);
                     char_literal76=(Token)match(input,51,FOLLOW_51_in_exprBase3714);  
                     stream_51.add(char_literal76);
 
@@ -2325,11 +2928,14 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 97:26: -> ^( HD exprBase )
                     {
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:97:29: ^( HD exprBase )
+                        dbg.location(97,29);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:97:29: ^( HD exprBase )
                         {
                         Object root_1 = (Object)adaptor.nil();
+                        dbg.location(97,31);
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(HD, "HD"), root_1);
 
+                        dbg.location(97,34);
                         adaptor.addChild(root_1, stream_exprBase.nextTree());
 
                         adaptor.addChild(root_0, root_1);
@@ -2341,20 +2947,26 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:97:46: '(' 'tl' exprBase ')'
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:97:46: '(' 'tl' exprBase ')'
                     {
+                    dbg.location(97,46);
                     char_literal77=(Token)match(input,49,FOLLOW_49_in_exprBase3726);  
                     stream_49.add(char_literal77);
 
+                    dbg.location(97,50);
                     string_literal78=(Token)match(input,54,FOLLOW_54_in_exprBase3728);  
                     stream_54.add(string_literal78);
 
+                    dbg.location(97,55);
                     pushFollow(FOLLOW_exprBase_in_exprBase3730);
                     exprBase79=exprBase();
 
                     state._fsp--;
 
                     stream_exprBase.add(exprBase79.getTree());
+                    dbg.location(97,64);
                     char_literal80=(Token)match(input,51,FOLLOW_51_in_exprBase3732);  
                     stream_51.add(char_literal80);
 
@@ -2373,11 +2985,14 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 97:68: -> ^( TL exprBase )
                     {
-                        // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:97:71: ^( TL exprBase )
+                        dbg.location(97,71);
+                        // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:97:71: ^( TL exprBase )
                         {
                         Object root_1 = (Object)adaptor.nil();
+                        dbg.location(97,73);
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(TL, "TL"), root_1);
 
+                        dbg.location(97,76);
                         adaptor.addChild(root_1, stream_exprBase.nextTree());
 
                         adaptor.addChild(root_0, root_1);
@@ -2404,6 +3019,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(97, 85);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprBase3");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprBase3"
@@ -2414,7 +3038,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase4"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:99:1: exprBase4 : '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:99:1: exprBase4 : '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) ;
     public final WhileParser.exprBase4_return exprBase4() throws RecognitionException {
         WhileParser.exprBase4_return retval = new WhileParser.exprBase4_return();
         retval.start = input.LT(1);
@@ -2434,29 +3058,40 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_Symbol=new RewriteRuleTokenStream(adaptor,"token Symbol");
         RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
+        try { dbg.enterRule(getGrammarFileName(), "exprBase4");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(99, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:100:2: ( '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:100:4: '(' Symbol lexpr ')'
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:100:2: ( '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:100:4: '(' Symbol lexpr ')'
             {
+            dbg.location(100,4);
             char_literal81=(Token)match(input,49,FOLLOW_49_in_exprBase4750);  
             stream_49.add(char_literal81);
 
+            dbg.location(100,8);
             Symbol82=(Token)match(input,Symbol,FOLLOW_Symbol_in_exprBase4752);  
             stream_Symbol.add(Symbol82);
 
+            dbg.location(100,15);
             pushFollow(FOLLOW_lexpr_in_exprBase4754);
             lexpr83=lexpr();
 
             state._fsp--;
 
             stream_lexpr.add(lexpr83.getTree());
+            dbg.location(100,21);
             char_literal84=(Token)match(input,51,FOLLOW_51_in_exprBase4756);  
             stream_51.add(char_literal84);
 
 
 
             // AST REWRITE
-            // elements: lexpr, Symbol
+            // elements: Symbol, lexpr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2468,14 +3103,19 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 100:25: -> ^( SYMB Symbol ( lexpr )? )
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:100:28: ^( SYMB Symbol ( lexpr )? )
+                dbg.location(100,28);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:100:28: ^( SYMB Symbol ( lexpr )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
+                dbg.location(100,30);
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(SYMB, "SYMB"), root_1);
 
+                dbg.location(100,35);
                 adaptor.addChild(root_1, stream_Symbol.nextNode());
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:100:42: ( lexpr )?
+                dbg.location(100,42);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:100:42: ( lexpr )?
                 if ( stream_lexpr.hasNext() ) {
+                    dbg.location(100,42);
                     adaptor.addChild(root_1, stream_lexpr.nextTree());
 
                 }
@@ -2503,6 +3143,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(100, 49);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprBase4");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprBase4"
@@ -2513,7 +3162,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:102:1: exprBase : ( exprBase1 | exprBase2 | exprBase3 | exprBase4 );
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:102:1: exprBase : ( exprBase1 | exprBase2 | exprBase3 | exprBase4 );
     public final WhileParser.exprBase_return exprBase() throws RecognitionException {
         WhileParser.exprBase_return retval = new WhileParser.exprBase_return();
         retval.start = input.LT(1);
@@ -2530,9 +3179,16 @@ public class WhileParser extends Parser {
 
 
 
+        try { dbg.enterRule(getGrammarFileName(), "exprBase");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(102, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:103:2: ( exprBase1 | exprBase2 | exprBase3 | exprBase4 )
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:103:2: ( exprBase1 | exprBase2 | exprBase3 | exprBase4 )
             int alt13=4;
+            try { dbg.enterDecision(13, decisionCanBacktrack[13]);
+
             int LA13_0 = input.LA(1);
 
             if ( ((LA13_0>=Variable && LA13_0<=Symbol)||LA13_0==48) ) {
@@ -2561,6 +3217,7 @@ public class WhileParser extends Parser {
                     NoViableAltException nvae =
                         new NoViableAltException("", 13, 2, input);
 
+                    dbg.recognitionException(nvae);
                     throw nvae;
                 }
 
@@ -2569,14 +3226,20 @@ public class WhileParser extends Parser {
                 NoViableAltException nvae =
                     new NoViableAltException("", 13, 0, input);
 
+                dbg.recognitionException(nvae);
                 throw nvae;
             }
+            } finally {dbg.exitDecision(13);}
+
             switch (alt13) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:103:4: exprBase1
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:103:4: exprBase1
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(103,4);
                     pushFollow(FOLLOW_exprBase1_in_exprBase777);
                     exprBase185=exprBase1();
 
@@ -2587,10 +3250,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:103:16: exprBase2
+                    dbg.enterAlt(2);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:103:16: exprBase2
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(103,16);
                     pushFollow(FOLLOW_exprBase2_in_exprBase781);
                     exprBase286=exprBase2();
 
@@ -2601,10 +3267,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:103:28: exprBase3
+                    dbg.enterAlt(3);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:103:28: exprBase3
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(103,28);
                     pushFollow(FOLLOW_exprBase3_in_exprBase785);
                     exprBase387=exprBase3();
 
@@ -2615,10 +3284,13 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:103:40: exprBase4
+                    dbg.enterAlt(4);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:103:40: exprBase4
                     {
                     root_0 = (Object)adaptor.nil();
 
+                    dbg.location(103,40);
                     pushFollow(FOLLOW_exprBase4_in_exprBase789);
                     exprBase488=exprBase4();
 
@@ -2644,6 +3316,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(103, 49);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "exprBase");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "exprBase"
@@ -2654,7 +3335,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:105:1: expression : exprBase ( '=?' exprBase )? -> ( exprBase )+ ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:105:1: expression : exprBase ( '=?' exprBase )? -> ( exprBase )+ ;
     public final WhileParser.expression_return expression() throws RecognitionException {
         WhileParser.expression_return retval = new WhileParser.expression_return();
         retval.start = input.LT(1);
@@ -2670,30 +3351,48 @@ public class WhileParser extends Parser {
         Object string_literal90_tree=null;
         RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
+        try { dbg.enterRule(getGrammarFileName(), "expression");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(105, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:106:2: ( exprBase ( '=?' exprBase )? -> ( exprBase )+ )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:106:4: exprBase ( '=?' exprBase )?
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:106:2: ( exprBase ( '=?' exprBase )? -> ( exprBase )+ )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:106:4: exprBase ( '=?' exprBase )?
             {
+            dbg.location(106,4);
             pushFollow(FOLLOW_exprBase_in_expression799);
             exprBase89=exprBase();
 
             state._fsp--;
 
             stream_exprBase.add(exprBase89.getTree());
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:106:13: ( '=?' exprBase )?
+            dbg.location(106,13);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:106:13: ( '=?' exprBase )?
             int alt14=2;
+            try { dbg.enterSubRule(14);
+            try { dbg.enterDecision(14, decisionCanBacktrack[14]);
+
             int LA14_0 = input.LA(1);
 
             if ( (LA14_0==55) ) {
                 alt14=1;
             }
+            } finally {dbg.exitDecision(14);}
+
             switch (alt14) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:106:14: '=?' exprBase
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:106:14: '=?' exprBase
                     {
+                    dbg.location(106,14);
                     string_literal90=(Token)match(input,55,FOLLOW_55_in_expression802);  
                     stream_55.add(string_literal90);
 
+                    dbg.location(106,19);
                     pushFollow(FOLLOW_exprBase_in_expression804);
                     exprBase91=exprBase();
 
@@ -2705,6 +3404,7 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(14);}
 
 
 
@@ -2721,10 +3421,12 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 106:30: -> ( exprBase )+
             {
+                dbg.location(106,33);
                 if ( !(stream_exprBase.hasNext()) ) {
                     throw new RewriteEarlyExitException();
                 }
                 while ( stream_exprBase.hasNext() ) {
+                    dbg.location(106,33);
                     adaptor.addChild(root_0, stream_exprBase.nextTree());
 
                 }
@@ -2749,6 +3451,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(106, 43);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "expression");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "expression"
@@ -2759,7 +3470,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "lexpr"
-    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:108:1: lexpr : ( exprBase lexpr )? -> ( exprBase )? ;
+    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:108:1: lexpr : ( exprBase lexpr )? -> ( exprBase )? ;
     public final WhileParser.lexpr_return lexpr() throws RecognitionException {
         WhileParser.lexpr_return retval = new WhileParser.lexpr_return();
         retval.start = input.LT(1);
@@ -2773,27 +3484,44 @@ public class WhileParser extends Parser {
 
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
+        try { dbg.enterRule(getGrammarFileName(), "lexpr");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(108, 1);
+
         try {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:109:2: ( ( exprBase lexpr )? -> ( exprBase )? )
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:109:2: ( ( exprBase lexpr )? -> ( exprBase )? )
+            dbg.enterAlt(1);
+
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:109:4: ( exprBase lexpr )?
             {
-            // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
+            dbg.location(109,4);
+            // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:109:4: ( exprBase lexpr )?
             int alt15=2;
+            try { dbg.enterSubRule(15);
+            try { dbg.enterDecision(15, decisionCanBacktrack[15]);
+
             int LA15_0 = input.LA(1);
 
             if ( ((LA15_0>=Variable && LA15_0<=Symbol)||(LA15_0>=48 && LA15_0<=49)) ) {
                 alt15=1;
             }
+            } finally {dbg.exitDecision(15);}
+
             switch (alt15) {
                 case 1 :
-                    // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:109:5: exprBase lexpr
+                    dbg.enterAlt(1);
+
+                    // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:109:5: exprBase lexpr
                     {
+                    dbg.location(109,5);
                     pushFollow(FOLLOW_exprBase_in_lexpr823);
                     exprBase92=exprBase();
 
                     state._fsp--;
 
                     stream_exprBase.add(exprBase92.getTree());
+                    dbg.location(109,14);
                     pushFollow(FOLLOW_lexpr_in_lexpr825);
                     lexpr93=lexpr();
 
@@ -2805,6 +3533,7 @@ public class WhileParser extends Parser {
                     break;
 
             }
+            } finally {dbg.exitSubRule(15);}
 
 
 
@@ -2821,8 +3550,10 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 109:22: -> ( exprBase )?
             {
-                // /home/rycam/Documents/TLC/Projet_TLC/Grammar/While.g:109:25: ( exprBase )?
+                dbg.location(109,25);
+                // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:109:25: ( exprBase )?
                 if ( stream_exprBase.hasNext() ) {
+                    dbg.location(109,25);
                     adaptor.addChild(root_0, stream_exprBase.nextTree());
 
                 }
@@ -2847,6 +3578,15 @@ public class WhileParser extends Parser {
         }
         finally {
         }
+        dbg.location(109, 34);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "lexpr");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
         return retval;
     }
     // $ANTLR end "lexpr"

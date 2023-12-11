@@ -1,31 +1,31 @@
+import org.antlr.runtime.tree.CommonTree;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.runtime.tree.CommonTree;
-
-class Fonction extends Symbole{
-    private List<Symbole> parametre;
-    private List<Symbole> variable;
+public class Fonction extends Symbole {
+    private List<Symbole> parametres;
+    private List<Symbole> variables;
 
     public Fonction(String nom,CommonTree arbre) {
         super(nom,arbre);
-        parametre = new ArrayList<Symbole>();
-        variable = new ArrayList<Symbole>();
+        parametres = new ArrayList<Symbole>();
+        variables = new ArrayList<Symbole>();
     }
 
-    public List<Symbole> getVariable() {
-        return variable;
+    public List<Symbole> getVariables() {
+        return variables;
     }
 
-    public List<Symbole> getParametre() {
-        return parametre;
+    public List<Symbole> getParametres() {
+        return parametres;
     }
 
     public void addVariable(Symbole var){
-        variable.add(var);
+        variables.add(var);
     }
 
     public void addParametre(Symbole param){
-        parametre.add(param);
+        parametres.add(param);
     }
 }

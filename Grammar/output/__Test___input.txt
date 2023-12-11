@@ -1,12 +1,19 @@
-function true :
-read
+function add :
+  read Op1, Op2
 %
- Result := nil;
+  Result := Op1 ;
+  for Op2 do
+    Result := ( cons nil Result )
+  od
+%
+  write Result
 
- if Result=?nil then 
-   Result := nil
- else
-   Result := az
- fi 
+function sub :
+  read Op1, Op2
 %
-write Result
+  Result := Op1;
+  for Op2 do
+    Result := (tl Result)
+  od
+%
+  write Result
