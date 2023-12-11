@@ -1,0 +1,28 @@
+public class GenerateurCodeTroisAdresses {
+    private int tempVarCount = 0;
+
+    public List<String> generateCode(CommonTree ast) {
+        List<String> code = new ArrayList<>();
+        traverseAST(ast, code);
+        return code;
+    }
+
+    private void traverseAST(CommonTree tree, List<String> code) {
+        if (tree == null) {
+            return;
+        }
+
+        // Exemple : traitement d'une addition
+        if (tree.getText().equals("+")) {
+            String leftOperand = tree.getChild(0).getText();
+            String rightOperand = tree.getChild(1).getText();
+            String tempVar = "t" + tempVarCount++;
+            code.add(tempVar + " = " + leftOperand + " + " + rightOperand);
+        }
+
+        // Traitement récursif des enfants
+        for (int i = 0; i < tree.getChildCount(); i++) {
+            traverseAST((CommonTree) tree.getChild(i), code);
+        }
+    }
+}
