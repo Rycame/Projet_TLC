@@ -1,1 +1,4 @@
 ./Grammar/output/
+.vscode/
+bin/
+.project

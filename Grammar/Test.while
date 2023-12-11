@@ -1,9 +1,0 @@
-function equalityExample:
-  read X%
-  if X=? a then 
-    X:= a
-  else
-    X:= b
-  fi
-%
-write X
