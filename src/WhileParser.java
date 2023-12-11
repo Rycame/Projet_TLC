@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/theo/Documents/Projet_TLC/Grammar/While.g 2023-12-11 14:09:20
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/theo/Documents/Projet_TLC/Grammar/While.g 2023-12-11 16:05:38
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -250,7 +250,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: definition, Symbol
+            // elements: Symbol, definition
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -375,7 +375,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: input, commands, output
+            // elements: commands, output, input
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -988,7 +988,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: exprs, vars
+            // elements: vars, exprs
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1257,7 +1257,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, commands
+            // elements: commands, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1360,7 +1360,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, commands
+            // elements: commands, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1475,7 +1475,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, Variable, commands
+            // elements: expression, commands, Variable
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2770,7 +2770,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "lexpr"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:108:1: lexpr : ( exprBase lexpr )? -> ( exprBase )? ;
+    // /home/theo/Documents/Projet_TLC/Grammar/While.g:108:1: lexpr : ( exprBase )* -> ( exprBase )* ;
     public final WhileParser.lexpr_return lexpr() throws RecognitionException {
         WhileParser.lexpr_return retval = new WhileParser.lexpr_return();
         retval.start = input.LT(1);
@@ -2779,43 +2779,41 @@ public class WhileParser extends Parser {
 
         WhileParser.exprBase_return exprBase91 = null;
 
-        WhileParser.lexpr_return lexpr92 = null;
 
-
-        RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:2: ( ( exprBase lexpr )? -> ( exprBase )? )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
+            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:2: ( ( exprBase )* -> ( exprBase )* )
+            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase )*
             {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-            if ( ((LA15_0>=Variable && LA15_0<=Symbol)||(LA15_0>=48 && LA15_0<=49)) ) {
-                alt15=1;
-            }
-            switch (alt15) {
-                case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:5: exprBase lexpr
-                    {
-                    pushFollow(FOLLOW_exprBase_in_lexpr822);
-                    exprBase91=exprBase();
+                if ( ((LA15_0>=Variable && LA15_0<=Symbol)||(LA15_0>=48 && LA15_0<=49)) ) {
+                    alt15=1;
+                }
 
-                    state._fsp--;
 
-                    stream_exprBase.add(exprBase91.getTree());
-                    pushFollow(FOLLOW_lexpr_in_lexpr824);
-                    lexpr92=lexpr();
+                switch (alt15) {
+            	case 1 :
+            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: exprBase
+            	    {
+            	    pushFollow(FOLLOW_exprBase_in_lexpr821);
+            	    exprBase91=exprBase();
 
-                    state._fsp--;
+            	    state._fsp--;
 
-                    stream_lexpr.add(lexpr92.getTree());
+            	    stream_exprBase.add(exprBase91.getTree());
 
-                    }
-                    break;
+            	    }
+            	    break;
 
-            }
+            	default :
+            	    break loop15;
+                }
+            } while (true);
 
 
 
@@ -2830,10 +2828,10 @@ public class WhileParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 109:22: -> ( exprBase )?
+            // 109:14: -> ( exprBase )*
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:25: ( exprBase )?
-                if ( stream_exprBase.hasNext() ) {
+                // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:17: ( exprBase )*
+                while ( stream_exprBase.hasNext() ) {
                     adaptor.addChild(root_0, stream_exprBase.nextTree());
 
                 }
@@ -2959,7 +2957,6 @@ public class WhileParser extends Parser {
     public static final BitSet FOLLOW_exprBase_in_expression798 = new BitSet(new long[]{0x0080000000000002L});
     public static final BitSet FOLLOW_55_in_expression801 = new BitSet(new long[]{0x0003000018000000L});
     public static final BitSet FOLLOW_exprBase_in_expression803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprBase_in_lexpr822 = new BitSet(new long[]{0x0003000018000000L});
-    public static final BitSet FOLLOW_lexpr_in_lexpr824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprBase_in_lexpr821 = new BitSet(new long[]{0x0003000018000002L});
 
 }

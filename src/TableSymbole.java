@@ -245,4 +245,15 @@ public class TableSymbole {
 
         return name;
     }
+
+    // private void validation(CommonTree ast) throws Exception {
+    //     if (ast != null) {
+    //         for (int i = 0; i < ast.getChildCount(); i++) {
+    //             CommonTree child = (CommonTree) ast.getChild(i);
+    //             if (child.getType() == WhileParser.SYMB) {
+                    
+    //             }
+    //         }
+    //     }
+    // }
 }

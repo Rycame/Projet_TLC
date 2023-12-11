@@ -12,14 +12,6 @@ function true :
   write Result
 
 
-function addOne :
-  read X
-  %
-  Y := X + (cons nil nil)
-  %
-  write Y
-
-
 function printRange :
   read N
   %
@@ -44,20 +36,14 @@ function undeclaredVariable :
   %
   write Y
 
-function invalidOperation :
-  read X
-  %
-  Y := X * (cons nil nil)
-  %
-  write Y
 
 function typeError :
   read Flag
   %
   if Flag then
-    Result := "True"
+    Result := (true param1 param2)
   else
-    Result := 42
+    Result := (printRange Flag)
   fi
   %
   write Result

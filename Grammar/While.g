@@ -106,5 +106,5 @@ expression
 	:	exprBase ('=?' exprBase)? -> exprBase+ ;
 	
 lexpr
-	:	(exprBase lexpr)? -> exprBase?;
+	:	exprBase* -> exprBase*;
 
