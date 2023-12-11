@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /home/theo/Documents/Projet_TLC/Grammar/While.g 2023-12-11 14:09:20
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g 2023-12-11 15:01:36
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -88,7 +88,7 @@ public class WhileParser extends Parser {
     }
 
     public String[] getTokenNames() { return WhileParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/theo/Documents/Projet_TLC/Grammar/While.g"; }
+    public String getGrammarFileName() { return "/Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g"; }
 
 
     public static class program_return extends ParserRuleReturnScope {
@@ -97,7 +97,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "program"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:39:1: program : ( function )+ -> ^( PROGRAM ( function )+ ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:39:1: program : ( function )+ -> ^( PROGRAM ( function )+ ) ;
     public final WhileParser.program_return program() throws RecognitionException {
         WhileParser.program_return retval = new WhileParser.program_return();
         retval.start = input.LT(1);
@@ -109,10 +109,10 @@ public class WhileParser extends Parser {
 
         RewriteRuleSubtreeStream stream_function=new RewriteRuleSubtreeStream(adaptor,"rule function");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:40:2: ( ( function )+ -> ^( PROGRAM ( function )+ ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:40:4: ( function )+
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:40:2: ( ( function )+ -> ^( PROGRAM ( function )+ ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:40:4: ( function )+
             {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:40:4: ( function )+
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:40:4: ( function )+
             int cnt1=0;
             loop1:
             do {
@@ -126,7 +126,7 @@ public class WhileParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:40:4: function
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:40:4: function
             	    {
             	    pushFollow(FOLLOW_function_in_program188);
             	    function1=function();
@@ -162,7 +162,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 40:15: -> ^( PROGRAM ( function )+ )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:40:18: ^( PROGRAM ( function )+ )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:40:18: ^( PROGRAM ( function )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PROGRAM, "PROGRAM"), root_1);
@@ -208,7 +208,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "function"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:42:1: function : 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:42:1: function : 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) ;
     public final WhileParser.function_return function() throws RecognitionException {
         WhileParser.function_return retval = new WhileParser.function_return();
         retval.start = input.LT(1);
@@ -229,8 +229,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_30=new RewriteRuleTokenStream(adaptor,"token 30");
         RewriteRuleSubtreeStream stream_definition=new RewriteRuleSubtreeStream(adaptor,"rule definition");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:43:2: ( 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:43:4: 'function' Symbol ':' definition
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:43:2: ( 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:43:4: 'function' Symbol ':' definition
             {
             string_literal2=(Token)match(input,29,FOLLOW_29_in_function209);  
             stream_29.add(string_literal2);
@@ -262,12 +262,12 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 43:37: -> ^( FUNCTION ^( NOM Symbol ) definition )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:43:40: ^( FUNCTION ^( NOM Symbol ) definition )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:43:40: ^( FUNCTION ^( NOM Symbol ) definition )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FUNCTION, "FUNCTION"), root_1);
 
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:43:51: ^( NOM Symbol )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:43:51: ^( NOM Symbol )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(NOM, "NOM"), root_2);
@@ -310,7 +310,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "definition"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:45:1: definition : 'read' input '%' commands '%' 'write' output -> input commands output ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:45:1: definition : 'read' input '%' commands '%' 'write' output -> input commands output ;
     public final WhileParser.definition_return definition() throws RecognitionException {
         WhileParser.definition_return retval = new WhileParser.definition_return();
         retval.start = input.LT(1);
@@ -339,8 +339,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_input=new RewriteRuleSubtreeStream(adaptor,"rule input");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:46:2: ( 'read' input '%' commands '%' 'write' output -> input commands output )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:46:4: 'read' input '%' commands '%' 'write' output
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:46:2: ( 'read' input '%' commands '%' 'write' output -> input commands output )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:46:4: 'read' input '%' commands '%' 'write' output
             {
             string_literal6=(Token)match(input,31,FOLLOW_31_in_definition239);  
             stream_31.add(string_literal6);
@@ -420,7 +420,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "input"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:48:1: input : ( inputSub -> inputSub | -> ^( INPUTS ) );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:48:1: input : ( inputSub -> inputSub | -> ^( INPUTS ) );
     public final WhileParser.input_return input() throws RecognitionException {
         WhileParser.input_return retval = new WhileParser.input_return();
         retval.start = input.LT(1);
@@ -432,7 +432,7 @@ public class WhileParser extends Parser {
 
         RewriteRuleSubtreeStream stream_inputSub=new RewriteRuleSubtreeStream(adaptor,"rule inputSub");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:49:2: ( inputSub -> inputSub | -> ^( INPUTS ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:49:2: ( inputSub -> inputSub | -> ^( INPUTS ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -450,7 +450,7 @@ public class WhileParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:49:4: inputSub
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:49:4: inputSub
                     {
                     pushFollow(FOLLOW_inputSub_in_input270);
                     inputSub13=inputSub();
@@ -481,7 +481,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:49:27: 
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:49:27: 
                     {
 
                     // AST REWRITE
@@ -497,7 +497,7 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 49:27: -> ^( INPUTS )
                     {
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:49:30: ^( INPUTS )
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:49:30: ^( INPUTS )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INPUTS, "INPUTS"), root_1);
@@ -536,7 +536,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "inputSub"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:52:1: inputSub : Variable ( ',' Variable )* -> ^( INPUTS ( Variable )* ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:52:1: inputSub : Variable ( ',' Variable )* -> ^( INPUTS ( Variable )* ) ;
     public final WhileParser.inputSub_return inputSub() throws RecognitionException {
         WhileParser.inputSub_return retval = new WhileParser.inputSub_return();
         retval.start = input.LT(1);
@@ -554,13 +554,13 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:2: ( Variable ( ',' Variable )* -> ^( INPUTS ( Variable )* ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:4: Variable ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:2: ( Variable ( ',' Variable )* -> ^( INPUTS ( Variable )* ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:4: Variable ( ',' Variable )*
             {
             Variable14=(Token)match(input,Variable,FOLLOW_Variable_in_inputSub293);  
             stream_Variable.add(Variable14);
 
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:13: ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:13: ( ',' Variable )*
             loop3:
             do {
                 int alt3=2;
@@ -573,7 +573,7 @@ public class WhileParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:14: ',' Variable
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:14: ',' Variable
             	    {
             	    char_literal15=(Token)match(input,34,FOLLOW_34_in_inputSub296);  
             	    stream_34.add(char_literal15);
@@ -605,12 +605,12 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 53:29: -> ^( INPUTS ( Variable )* )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:32: ^( INPUTS ( Variable )* )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:32: ^( INPUTS ( Variable )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(INPUTS, "INPUTS"), root_1);
 
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:53:41: ( Variable )*
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:53:41: ( Variable )*
                 while ( stream_Variable.hasNext() ) {
                     adaptor.addChild(root_1, stream_Variable.nextNode());
 
@@ -649,7 +649,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "output"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:55:1: output : Variable ( ',' Variable )* -> ^( OUTPUTS ( Variable )+ ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:55:1: output : Variable ( ',' Variable )* -> ^( OUTPUTS ( Variable )+ ) ;
     public final WhileParser.output_return output() throws RecognitionException {
         WhileParser.output_return retval = new WhileParser.output_return();
         retval.start = input.LT(1);
@@ -667,13 +667,13 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:56:2: ( Variable ( ',' Variable )* -> ^( OUTPUTS ( Variable )+ ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:56:4: Variable ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:56:2: ( Variable ( ',' Variable )* -> ^( OUTPUTS ( Variable )+ ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:56:4: Variable ( ',' Variable )*
             {
             Variable17=(Token)match(input,Variable,FOLLOW_Variable_in_output320);  
             stream_Variable.add(Variable17);
 
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:56:13: ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:56:13: ( ',' Variable )*
             loop4:
             do {
                 int alt4=2;
@@ -686,7 +686,7 @@ public class WhileParser extends Parser {
 
                 switch (alt4) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:56:14: ',' Variable
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:56:14: ',' Variable
             	    {
             	    char_literal18=(Token)match(input,34,FOLLOW_34_in_output323);  
             	    stream_34.add(char_literal18);
@@ -718,7 +718,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 56:29: -> ^( OUTPUTS ( Variable )+ )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:56:32: ^( OUTPUTS ( Variable )+ )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:56:32: ^( OUTPUTS ( Variable )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(OUTPUTS, "OUTPUTS"), root_1);
@@ -764,7 +764,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commands"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:58:1: commands : command ( ';' command )* -> ^( COMMANDS ( command )+ ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:58:1: commands : command ( ';' command )* -> ^( COMMANDS ( command )+ ) ;
     public final WhileParser.commands_return commands() throws RecognitionException {
         WhileParser.commands_return retval = new WhileParser.commands_return();
         retval.start = input.LT(1);
@@ -781,8 +781,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_35=new RewriteRuleTokenStream(adaptor,"token 35");
         RewriteRuleSubtreeStream stream_command=new RewriteRuleSubtreeStream(adaptor,"rule command");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:59:2: ( command ( ';' command )* -> ^( COMMANDS ( command )+ ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:59:4: command ( ';' command )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:59:2: ( command ( ';' command )* -> ^( COMMANDS ( command )+ ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:59:4: command ( ';' command )*
             {
             pushFollow(FOLLOW_command_in_commands346);
             command20=command();
@@ -790,7 +790,7 @@ public class WhileParser extends Parser {
             state._fsp--;
 
             stream_command.add(command20.getTree());
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:59:12: ( ';' command )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:59:12: ( ';' command )*
             loop5:
             do {
                 int alt5=2;
@@ -803,7 +803,7 @@ public class WhileParser extends Parser {
 
                 switch (alt5) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:59:13: ';' command
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:59:13: ';' command
             	    {
             	    char_literal21=(Token)match(input,35,FOLLOW_35_in_commands349);  
             	    stream_35.add(char_literal21);
@@ -838,7 +838,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 59:27: -> ^( COMMANDS ( command )+ )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:59:30: ^( COMMANDS ( command )+ )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:59:30: ^( COMMANDS ( command )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(COMMANDS, "COMMANDS"), root_1);
@@ -884,7 +884,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandNop"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:61:1: commandNop : 'nop' -> NOP ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:61:1: commandNop : 'nop' -> NOP ;
     public final WhileParser.commandNop_return commandNop() throws RecognitionException {
         WhileParser.commandNop_return retval = new WhileParser.commandNop_return();
         retval.start = input.LT(1);
@@ -897,8 +897,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_36=new RewriteRuleTokenStream(adaptor,"token 36");
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:62:2: ( 'nop' -> NOP )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:62:4: 'nop'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:62:2: ( 'nop' -> NOP )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:62:4: 'nop'
             {
             string_literal23=(Token)match(input,36,FOLLOW_36_in_commandNop373);  
             stream_36.add(string_literal23);
@@ -949,7 +949,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandEqual"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:64:1: commandEqual : vars ':=' exprs -> ^( EQUAL vars exprs ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:64:1: commandEqual : vars ':=' exprs -> ^( EQUAL vars exprs ) ;
     public final WhileParser.commandEqual_return commandEqual() throws RecognitionException {
         WhileParser.commandEqual_return retval = new WhileParser.commandEqual_return();
         retval.start = input.LT(1);
@@ -967,8 +967,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_exprs=new RewriteRuleSubtreeStream(adaptor,"rule exprs");
         RewriteRuleSubtreeStream stream_vars=new RewriteRuleSubtreeStream(adaptor,"rule vars");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:65:2: ( vars ':=' exprs -> ^( EQUAL vars exprs ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:65:4: vars ':=' exprs
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:65:2: ( vars ':=' exprs -> ^( EQUAL vars exprs ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:65:4: vars ':=' exprs
             {
             pushFollow(FOLLOW_vars_in_commandEqual387);
             vars24=vars();
@@ -988,7 +988,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: exprs, vars
+            // elements: vars, exprs
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1000,7 +1000,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 65:20: -> ^( EQUAL vars exprs )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:65:23: ^( EQUAL vars exprs )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:65:23: ^( EQUAL vars exprs )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EQUAL, "EQUAL"), root_1);
@@ -1040,7 +1040,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandIf"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:67:1: commandIf : 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:67:1: commandIf : 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) ;
     public final WhileParser.commandIf_return commandIf() throws RecognitionException {
         WhileParser.commandIf_return retval = new WhileParser.commandIf_return();
         retval.start = input.LT(1);
@@ -1069,8 +1069,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:2: ( 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:4: 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:2: ( 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:4: 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi'
             {
             string_literal27=(Token)match(input,38,FOLLOW_38_in_commandIf413);  
             stream_38.add(string_literal27);
@@ -1090,7 +1090,7 @@ public class WhileParser extends Parser {
             state._fsp--;
 
             stream_commands.add(c1.getTree());
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:39: ( 'else' c2= commands )?
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:39: ( 'else' c2= commands )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1099,7 +1099,7 @@ public class WhileParser extends Parser {
             }
             switch (alt6) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:40: 'else' c2= commands
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:40: 'else' c2= commands
                     {
                     string_literal30=(Token)match(input,40,FOLLOW_40_in_commandIf424);  
                     stream_40.add(string_literal30);
@@ -1122,7 +1122,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, c1, c2
+            // elements: c1, c2, expression
             // token labels: 
             // rule labels: c1, retval, c2
             // token list labels: 
@@ -1136,12 +1136,12 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 69:66: -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:69: ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:69: ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(IF, "IF"), root_1);
 
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:74: ^( CONDITION expression )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:74: ^( CONDITION expression )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(CONDITION, "CONDITION"), root_2);
@@ -1150,7 +1150,7 @@ public class WhileParser extends Parser {
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:98: ^( THEN $c1)
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:98: ^( THEN $c1)
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(THEN, "THEN"), root_2);
@@ -1159,9 +1159,9 @@ public class WhileParser extends Parser {
 
                 adaptor.addChild(root_1, root_2);
                 }
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:110: ( ^( ELSE $c2) )?
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:110: ( ^( ELSE $c2) )?
                 if ( stream_c2.hasNext() ) {
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:69:110: ^( ELSE $c2)
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:69:110: ^( ELSE $c2)
                     {
                     Object root_2 = (Object)adaptor.nil();
                     root_2 = (Object)adaptor.becomeRoot((Object)adaptor.create(ELSE, "ELSE"), root_2);
@@ -1206,7 +1206,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandWhile"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:72:1: commandWhile : 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:72:1: commandWhile : 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) ;
     public final WhileParser.commandWhile_return commandWhile() throws RecognitionException {
         WhileParser.commandWhile_return retval = new WhileParser.commandWhile_return();
         retval.start = input.LT(1);
@@ -1230,8 +1230,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:73:2: ( 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:73:4: 'while' expression 'do' commands 'od'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:73:2: ( 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:73:4: 'while' expression 'do' commands 'od'
             {
             string_literal32=(Token)match(input,42,FOLLOW_42_in_commandWhile469);  
             stream_42.add(string_literal32);
@@ -1269,7 +1269,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 73:42: -> ^( WHILE expression commands )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:73:45: ^( WHILE expression commands )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:73:45: ^( WHILE expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(WHILE, "WHILE"), root_1);
@@ -1309,7 +1309,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandFor"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:75:1: commandFor : 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:75:1: commandFor : 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) ;
     public final WhileParser.commandFor_return commandFor() throws RecognitionException {
         WhileParser.commandFor_return retval = new WhileParser.commandFor_return();
         retval.start = input.LT(1);
@@ -1333,8 +1333,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:76:2: ( 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:76:4: 'for' expression 'do' commands 'od'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:76:2: ( 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:76:4: 'for' expression 'do' commands 'od'
             {
             string_literal37=(Token)match(input,45,FOLLOW_45_in_commandFor497);  
             stream_45.add(string_literal37);
@@ -1372,7 +1372,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 76:40: -> ^( FOR expression commands )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:76:43: ^( FOR expression commands )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:76:43: ^( FOR expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FOR, "FOR"), root_1);
@@ -1412,7 +1412,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "commandForeach"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:78:1: commandForeach : 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:78:1: commandForeach : 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) ;
     public final WhileParser.commandForeach_return commandForeach() throws RecognitionException {
         WhileParser.commandForeach_return retval = new WhileParser.commandForeach_return();
         retval.start = input.LT(1);
@@ -1442,8 +1442,8 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         RewriteRuleSubtreeStream stream_commands=new RewriteRuleSubtreeStream(adaptor,"rule commands");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:79:2: ( 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:79:4: 'foreach' Variable 'in' expression 'do' commands 'od'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:79:2: ( 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:79:4: 'foreach' Variable 'in' expression 'do' commands 'od'
             {
             string_literal42=(Token)match(input,46,FOLLOW_46_in_commandForeach525);  
             stream_46.add(string_literal42);
@@ -1475,7 +1475,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, Variable, commands
+            // elements: commands, Variable, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1487,7 +1487,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 79:58: -> ^( FOREACH Variable expression commands )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:79:61: ^( FOREACH Variable expression commands )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:79:61: ^( FOREACH Variable expression commands )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(FOREACH, "FOREACH"), root_1);
@@ -1528,7 +1528,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "command"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:81:1: command : ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:81:1: command : ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach );
     public final WhileParser.command_return command() throws RecognitionException {
         WhileParser.command_return retval = new WhileParser.command_return();
         retval.start = input.LT(1);
@@ -1550,7 +1550,7 @@ public class WhileParser extends Parser {
 
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:2: ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:2: ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach )
             int alt7=6;
             switch ( input.LA(1) ) {
             case 36:
@@ -1592,7 +1592,7 @@ public class WhileParser extends Parser {
 
             switch (alt7) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:4: commandNop
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:4: commandNop
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1606,7 +1606,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:17: commandEqual
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:17: commandEqual
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1620,7 +1620,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:32: commandIf
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:32: commandIf
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1634,7 +1634,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:44: commandWhile
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:44: commandWhile
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1648,7 +1648,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:59: commandFor
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:59: commandFor
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1662,7 +1662,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:82:72: commandForeach
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:82:72: commandForeach
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1701,7 +1701,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "vars"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:84:1: vars : Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:84:1: vars : Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) ;
     public final WhileParser.vars_return vars() throws RecognitionException {
         WhileParser.vars_return retval = new WhileParser.vars_return();
         retval.start = input.LT(1);
@@ -1719,13 +1719,13 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_Variable=new RewriteRuleTokenStream(adaptor,"token Variable");
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:85:2: ( Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:85:4: Variable ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:85:2: ( Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:85:4: Variable ( ',' Variable )*
             {
             Variable55=(Token)match(input,Variable,FOLLOW_Variable_in_vars589);  
             stream_Variable.add(Variable55);
 
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:85:13: ( ',' Variable )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:85:13: ( ',' Variable )*
             loop8:
             do {
                 int alt8=2;
@@ -1738,7 +1738,7 @@ public class WhileParser extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:85:14: ',' Variable
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:85:14: ',' Variable
             	    {
             	    char_literal56=(Token)match(input,34,FOLLOW_34_in_vars592);  
             	    stream_34.add(char_literal56);
@@ -1770,7 +1770,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 85:29: -> ^( VARS ( Variable )+ )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:85:32: ^( VARS ( Variable )+ )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:85:32: ^( VARS ( Variable )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(VARS, "VARS"), root_1);
@@ -1816,7 +1816,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprs"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:87:1: exprs : expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:87:1: exprs : expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) ;
     public final WhileParser.exprs_return exprs() throws RecognitionException {
         WhileParser.exprs_return retval = new WhileParser.exprs_return();
         retval.start = input.LT(1);
@@ -1833,8 +1833,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_34=new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:88:2: ( expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:88:4: expression ( ',' expression )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:88:2: ( expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:88:4: expression ( ',' expression )*
             {
             pushFollow(FOLLOW_expression_in_exprs615);
             expression58=expression();
@@ -1842,7 +1842,7 @@ public class WhileParser extends Parser {
             state._fsp--;
 
             stream_expression.add(expression58.getTree());
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:88:15: ( ',' expression )*
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:88:15: ( ',' expression )*
             loop9:
             do {
                 int alt9=2;
@@ -1855,7 +1855,7 @@ public class WhileParser extends Parser {
 
                 switch (alt9) {
             	case 1 :
-            	    // /home/theo/Documents/Projet_TLC/Grammar/While.g:88:16: ',' expression
+            	    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:88:16: ',' expression
             	    {
             	    char_literal59=(Token)match(input,34,FOLLOW_34_in_exprs618);  
             	    stream_34.add(char_literal59);
@@ -1890,7 +1890,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 88:33: -> ^( EXPRS ( expression )+ )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:88:36: ^( EXPRS ( expression )+ )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:88:36: ^( EXPRS ( expression )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(EXPRS, "EXPRS"), root_1);
@@ -1936,7 +1936,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase1"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:90:1: exprBase1 : ( 'nil' -> NIL | Variable | Symbol );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:90:1: exprBase1 : ( 'nil' -> NIL | Variable | Symbol );
     public final WhileParser.exprBase1_return exprBase1() throws RecognitionException {
         WhileParser.exprBase1_return retval = new WhileParser.exprBase1_return();
         retval.start = input.LT(1);
@@ -1953,7 +1953,7 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_48=new RewriteRuleTokenStream(adaptor,"token 48");
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:91:2: ( 'nil' -> NIL | Variable | Symbol )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:91:2: ( 'nil' -> NIL | Variable | Symbol )
             int alt10=3;
             switch ( input.LA(1) ) {
             case 48:
@@ -1980,7 +1980,7 @@ public class WhileParser extends Parser {
 
             switch (alt10) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:91:4: 'nil'
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:91:4: 'nil'
                     {
                     string_literal61=(Token)match(input,48,FOLLOW_48_in_exprBase1641);  
                     stream_48.add(string_literal61);
@@ -2008,7 +2008,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:91:19: Variable
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:91:19: Variable
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2020,7 +2020,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:91:30: Symbol
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:91:30: Symbol
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2057,7 +2057,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase2"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:93:1: exprBase2 : ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:93:1: exprBase2 : ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) );
     public final WhileParser.exprBase2_return exprBase2() throws RecognitionException {
         WhileParser.exprBase2_return retval = new WhileParser.exprBase2_return();
         retval.start = input.LT(1);
@@ -2087,7 +2087,7 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:2: ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:2: ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -2115,7 +2115,7 @@ public class WhileParser extends Parser {
             }
             switch (alt11) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:4: '(' 'cons' lexpr ')'
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:4: '(' 'cons' lexpr ')'
                     {
                     char_literal64=(Token)match(input,49,FOLLOW_49_in_exprBase2663);  
                     stream_49.add(char_literal64);
@@ -2147,12 +2147,12 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 94:25: -> ^( CONS ( lexpr )? )
                     {
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:28: ^( CONS ( lexpr )? )
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:28: ^( CONS ( lexpr )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(CONS, "CONS"), root_1);
 
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:35: ( lexpr )?
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:35: ( lexpr )?
                         if ( stream_lexpr.hasNext() ) {
                             adaptor.addChild(root_1, stream_lexpr.nextTree());
 
@@ -2168,7 +2168,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:45: '(' 'list' lexpr ')'
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:45: '(' 'list' lexpr ')'
                     {
                     char_literal68=(Token)match(input,49,FOLLOW_49_in_exprBase2682);  
                     stream_49.add(char_literal68);
@@ -2200,12 +2200,12 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 94:66: -> ^( LIST ( lexpr )? )
                     {
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:69: ^( LIST ( lexpr )? )
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:69: ^( LIST ( lexpr )? )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LIST, "LIST"), root_1);
 
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:94:76: ( lexpr )?
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:94:76: ( lexpr )?
                         if ( stream_lexpr.hasNext() ) {
                             adaptor.addChild(root_1, stream_lexpr.nextTree());
 
@@ -2246,7 +2246,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase3"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:96:1: exprBase3 : ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:96:1: exprBase3 : ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) );
     public final WhileParser.exprBase3_return exprBase3() throws RecognitionException {
         WhileParser.exprBase3_return retval = new WhileParser.exprBase3_return();
         retval.start = input.LT(1);
@@ -2276,7 +2276,7 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_54=new RewriteRuleTokenStream(adaptor,"token 54");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:97:2: ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:97:2: ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2304,7 +2304,7 @@ public class WhileParser extends Parser {
             }
             switch (alt12) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:97:4: '(' 'hd' exprBase ')'
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:97:4: '(' 'hd' exprBase ')'
                     {
                     char_literal72=(Token)match(input,49,FOLLOW_49_in_exprBase3707);  
                     stream_49.add(char_literal72);
@@ -2336,7 +2336,7 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 97:26: -> ^( HD exprBase )
                     {
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:97:29: ^( HD exprBase )
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:97:29: ^( HD exprBase )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(HD, "HD"), root_1);
@@ -2352,7 +2352,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:97:46: '(' 'tl' exprBase ')'
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:97:46: '(' 'tl' exprBase ')'
                     {
                     char_literal76=(Token)match(input,49,FOLLOW_49_in_exprBase3725);  
                     stream_49.add(char_literal76);
@@ -2384,7 +2384,7 @@ public class WhileParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 97:68: -> ^( TL exprBase )
                     {
-                        // /home/theo/Documents/Projet_TLC/Grammar/While.g:97:71: ^( TL exprBase )
+                        // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:97:71: ^( TL exprBase )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(TL, "TL"), root_1);
@@ -2425,7 +2425,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase4"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:99:1: exprBase4 : '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:99:1: exprBase4 : '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) ;
     public final WhileParser.exprBase4_return exprBase4() throws RecognitionException {
         WhileParser.exprBase4_return retval = new WhileParser.exprBase4_return();
         retval.start = input.LT(1);
@@ -2446,8 +2446,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:100:2: ( '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:100:4: '(' Symbol lexpr ')'
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:100:2: ( '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:100:4: '(' Symbol lexpr ')'
             {
             char_literal80=(Token)match(input,49,FOLLOW_49_in_exprBase4749);  
             stream_49.add(char_literal80);
@@ -2479,13 +2479,13 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 100:25: -> ^( SYMB Symbol ( lexpr )? )
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:100:28: ^( SYMB Symbol ( lexpr )? )
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:100:28: ^( SYMB Symbol ( lexpr )? )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(SYMB, "SYMB"), root_1);
 
                 adaptor.addChild(root_1, stream_Symbol.nextNode());
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:100:42: ( lexpr )?
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:100:42: ( lexpr )?
                 if ( stream_lexpr.hasNext() ) {
                     adaptor.addChild(root_1, stream_lexpr.nextTree());
 
@@ -2524,7 +2524,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:102:1: exprBase : ( exprBase1 | exprBase2 | exprBase3 | exprBase4 );
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:102:1: exprBase : ( exprBase1 | exprBase2 | exprBase3 | exprBase4 );
     public final WhileParser.exprBase_return exprBase() throws RecognitionException {
         WhileParser.exprBase_return retval = new WhileParser.exprBase_return();
         retval.start = input.LT(1);
@@ -2542,7 +2542,7 @@ public class WhileParser extends Parser {
 
 
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:103:2: ( exprBase1 | exprBase2 | exprBase3 | exprBase4 )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:103:2: ( exprBase1 | exprBase2 | exprBase3 | exprBase4 )
             int alt13=4;
             int LA13_0 = input.LA(1);
 
@@ -2584,7 +2584,7 @@ public class WhileParser extends Parser {
             }
             switch (alt13) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:103:4: exprBase1
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:103:4: exprBase1
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2598,7 +2598,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:103:16: exprBase2
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:103:16: exprBase2
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2612,7 +2612,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:103:28: exprBase3
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:103:28: exprBase3
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2626,7 +2626,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:103:40: exprBase4
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:103:40: exprBase4
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2665,7 +2665,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:105:1: expression : exprBase ( '=?' exprBase )? -> ( exprBase )+ ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:105:1: expression : exprBase ( '=?' exprBase )? -> ( exprBase )+ ;
     public final WhileParser.expression_return expression() throws RecognitionException {
         WhileParser.expression_return retval = new WhileParser.expression_return();
         retval.start = input.LT(1);
@@ -2682,8 +2682,8 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:106:2: ( exprBase ( '=?' exprBase )? -> ( exprBase )+ )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:106:4: exprBase ( '=?' exprBase )?
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:106:2: ( exprBase ( '=?' exprBase )? -> ( exprBase )+ )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:106:4: exprBase ( '=?' exprBase )?
             {
             pushFollow(FOLLOW_exprBase_in_expression798);
             exprBase88=exprBase();
@@ -2691,7 +2691,7 @@ public class WhileParser extends Parser {
             state._fsp--;
 
             stream_exprBase.add(exprBase88.getTree());
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:106:13: ( '=?' exprBase )?
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:106:13: ( '=?' exprBase )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2700,7 +2700,7 @@ public class WhileParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:106:14: '=?' exprBase
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:106:14: '=?' exprBase
                     {
                     string_literal89=(Token)match(input,55,FOLLOW_55_in_expression801);  
                     stream_55.add(string_literal89);
@@ -2770,7 +2770,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "lexpr"
-    // /home/theo/Documents/Projet_TLC/Grammar/While.g:108:1: lexpr : ( exprBase lexpr )? -> ( exprBase )? ;
+    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:108:1: lexpr : ( exprBase lexpr )? -> ( exprBase )? ;
     public final WhileParser.lexpr_return lexpr() throws RecognitionException {
         WhileParser.lexpr_return retval = new WhileParser.lexpr_return();
         retval.start = input.LT(1);
@@ -2785,10 +2785,10 @@ public class WhileParser extends Parser {
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
         try {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:2: ( ( exprBase lexpr )? -> ( exprBase )? )
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:109:2: ( ( exprBase lexpr )? -> ( exprBase )? )
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
             {
-            // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
+            // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:109:4: ( exprBase lexpr )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -2797,7 +2797,7 @@ public class WhileParser extends Parser {
             }
             switch (alt15) {
                 case 1 :
-                    // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:5: exprBase lexpr
+                    // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:109:5: exprBase lexpr
                     {
                     pushFollow(FOLLOW_exprBase_in_lexpr822);
                     exprBase91=exprBase();
@@ -2832,7 +2832,7 @@ public class WhileParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 109:22: -> ( exprBase )?
             {
-                // /home/theo/Documents/Projet_TLC/Grammar/While.g:109:25: ( exprBase )?
+                // /Users/patrickbernard/Documents/Projet_TLC/Grammar/While.g:109:25: ( exprBase )?
                 if ( stream_exprBase.hasNext() ) {
                     adaptor.addChild(root_0, stream_exprBase.nextTree());
 

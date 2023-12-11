@@ -1,11 +1,12 @@
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         // Le fichier contenant le programme While
-        ANTLRFileStream input = new ANTLRFileStream("test/Test.while");
+        ANTLRFileStream input = new ANTLRFileStream("test/Test_simple_3adresses.while");
 
         // Créer le Lexer et le Parser
         WhileLexer lexer = new WhileLexer(input);
@@ -18,10 +19,18 @@ public class Main {
         // Récupère l'AST depuis le résultat du Parser
         CommonTree tree = (CommonTree) result.getTree();
 
+        /*
         // Print the AST
         System.out.println(tree.toStringTree());
 
         TableSymbole tableSymbole = new TableSymbole(tree);
         tableSymbole.afficherTable();
+        */
+
+
+        GenerateurCodeTroisAdresses generateur = new GenerateurCodeTroisAdresses(tree);
+        List<String> code_3_adresses = generateur.generateCode();
+        System.out.println(code_3_adresses);
+
     }
 }

@@ -1,9 +1,21 @@
+import java.util.List;
+import java.util.ArrayList;
+
+import org.antlr.runtime.ANTLRFileStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
+
 public class GenerateurCodeTroisAdresses {
     private int tempVarCount = 0;
+    CommonTree ast;
 
-    public List<String> generateCode(CommonTree ast) {
+    GenerateurCodeTroisAdresses(CommonTree input_ast){
+        this.ast = input_ast;
+    }
+
+    public List<String> generateCode() {
         List<String> code = new ArrayList<>();
-        traverseAST(ast, code);
+        traverseAST(this.ast, code);
         return code;
     }
 
@@ -25,4 +37,6 @@ public class GenerateurCodeTroisAdresses {
             traverseAST((CommonTree) tree.getChild(i), code);
         }
     }
+
 }
+

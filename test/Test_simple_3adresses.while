@@ -1,0 +1,12 @@
+function main:
+    read a, b
+    % 
+    c := a + b;
+    d := a - b;
+    if c =? d then
+        nop
+    else
+        e := c * d
+    fi;
+    %
+    write e
