@@ -24,9 +24,11 @@ public class Main {
         TableSymbole tableSymbole = new TableSymbole(tree);
         tableSymbole.afficherTable();
 
-        System.out.println(tableSymbole.analyse(tree));
-
-        TroisAdresses troisAdresses = new TroisAdresses();
-        troisAdresses.generate(tree);
+        if (tableSymbole.analyse(tree)) {
+            TroisAdresses troisAdresses = new TroisAdresses();
+            troisAdresses.generate(tree);
+        } else {
+            System.out.println("Le code 3 adresses n'a pas été généré à cause de l'erreur ci-dessus.");
+        }
     }
 }
