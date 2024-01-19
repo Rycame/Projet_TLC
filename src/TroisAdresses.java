@@ -13,6 +13,7 @@ public class TroisAdresses {
     int nbFor;
     int nbWhile;
     int nbIf;
+    int nbForeach;
     final String fileName = "code.3addr";
 
     public TroisAdresses() {
@@ -21,6 +22,7 @@ public class TroisAdresses {
         this.nbFor = 0;
         this.nbWhile = 0;
         this.nbIf = 0;
+        this.nbForeach = 0;
 
         this.creerFichier();
     }
@@ -114,6 +116,8 @@ public class TroisAdresses {
                 this.parcoursWhile((CommonTree) commands.getChild(i));
             } else if (commands.getChild(i).getType() == WhileParser.IF) {
                 this.parcoursIf((CommonTree) commands.getChild(i));
+            } else if (commands.getChild(i).getType() == WhileParser.FOREACH) {
+                this.parcoursForeach((CommonTree) commands.getChild(i));
             }
         }
     }
@@ -181,5 +185,11 @@ public class TroisAdresses {
             this.ajouterTexte("goto if_" + this.nbIf + "_fin");
         }
         this.ajouterTexte("if_" + this.nbIf + "_fin:");
+    }
+
+    private void parcoursForeach(CommonTree foreach) {
+        this.nbForeach += 1;
+
+        this.ajouterTexte("Le foreach n'a pas encore été implémenté.");
     }
 }
