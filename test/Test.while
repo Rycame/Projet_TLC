@@ -1,0 +1,50 @@
+function true :
+  read
+  %
+  Result := nil;
+
+  if Result=?nil then 
+    Result := nil
+  else
+    Result := az
+  fi 
+  %
+  write Result
+
+
+function printRange :
+  read N
+  %
+  for N do
+    Result := N
+  od
+  %
+  write Result
+ 
+
+function invalidVariable :
+  read
+  %
+  InvalidVar := nil
+  %
+  write InvalidVar
+
+function undeclaredVariable :
+  read X
+  %
+  Y := Z
+  %
+  write Y
+
+
+function typeError :
+  read Flag
+  %
+  if Flag then
+    Result := (true param1 param2)
+  else
+    Result := (printRange Flag)
+  fi
+  %
+  write Result
+

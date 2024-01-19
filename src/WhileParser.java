@@ -98,13 +98,13 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "program"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:39:1: program : ( function )+ -> ^( PROGRAM ( function )+ ) ;
-    public final WhileParser.program_return program() throws RecognitionException {
-        WhileParser.program_return retval = new WhileParser.program_return();
+    public final program_return program() throws RecognitionException {
+        program_return retval = new program_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        WhileParser.function_return function1 = null;
+        function_return function1 = null;
 
 
         RewriteRuleSubtreeStream stream_function=new RewriteRuleSubtreeStream(adaptor,"rule function");
@@ -209,8 +209,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "function"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:42:1: function : 'function' Symbol ':' definition -> ^( FUNCTION ^( NOM Symbol ) definition ) ;
-    public final WhileParser.function_return function() throws RecognitionException {
-        WhileParser.function_return retval = new WhileParser.function_return();
+    public final function_return function() throws RecognitionException {
+        function_return retval = new function_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -218,7 +218,7 @@ public class WhileParser extends Parser {
         Token string_literal2=null;
         Token Symbol3=null;
         Token char_literal4=null;
-        WhileParser.definition_return definition5 = null;
+        definition_return definition5 = null;
 
 
         Object string_literal2_tree=null;
@@ -311,8 +311,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "definition"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:45:1: definition : 'read' input '%' commands '%' 'write' output -> input commands output ;
-    public final WhileParser.definition_return definition() throws RecognitionException {
-        WhileParser.definition_return retval = new WhileParser.definition_return();
+    public final definition_return definition() throws RecognitionException {
+        definition_return retval = new definition_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -321,11 +321,11 @@ public class WhileParser extends Parser {
         Token char_literal8=null;
         Token char_literal10=null;
         Token string_literal11=null;
-        WhileParser.input_return input7 = null;
+        input_return input7 = null;
 
-        WhileParser.commands_return commands9 = null;
+        commands_return commands9 = null;
 
-        WhileParser.output_return output12 = null;
+        output_return output12 = null;
 
 
         Object string_literal6_tree=null;
@@ -421,13 +421,13 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "input"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:48:1: input : ( inputSub -> inputSub | -> ^( INPUTS ) );
-    public final WhileParser.input_return input() throws RecognitionException {
-        WhileParser.input_return retval = new WhileParser.input_return();
+    public final input_return input() throws RecognitionException {
+        input_return retval = new input_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        WhileParser.inputSub_return inputSub13 = null;
+        inputSub_return inputSub13 = null;
 
 
         RewriteRuleSubtreeStream stream_inputSub=new RewriteRuleSubtreeStream(adaptor,"rule inputSub");
@@ -537,8 +537,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "inputSub"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:52:1: inputSub : Variable ( ',' Variable )* -> ^( INPUTS ( Variable )* ) ;
-    public final WhileParser.inputSub_return inputSub() throws RecognitionException {
-        WhileParser.inputSub_return retval = new WhileParser.inputSub_return();
+    public final inputSub_return inputSub() throws RecognitionException {
+        inputSub_return retval = new inputSub_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -650,8 +650,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "output"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:55:1: output : Variable ( ',' Variable )* -> ^( OUTPUTS ( Variable )+ ) ;
-    public final WhileParser.output_return output() throws RecognitionException {
-        WhileParser.output_return retval = new WhileParser.output_return();
+    public final output_return output() throws RecognitionException {
+        output_return retval = new output_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -765,16 +765,16 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commands"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:58:1: commands : command ( ';' command )* -> ^( COMMANDS ( command )+ ) ;
-    public final WhileParser.commands_return commands() throws RecognitionException {
-        WhileParser.commands_return retval = new WhileParser.commands_return();
+    public final commands_return commands() throws RecognitionException {
+        commands_return retval = new commands_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
         Token char_literal21=null;
-        WhileParser.command_return command20 = null;
+        command_return command20 = null;
 
-        WhileParser.command_return command22 = null;
+        command_return command22 = null;
 
 
         Object char_literal21_tree=null;
@@ -885,8 +885,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandNop"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:61:1: commandNop : 'nop' -> NOP ;
-    public final WhileParser.commandNop_return commandNop() throws RecognitionException {
-        WhileParser.commandNop_return retval = new WhileParser.commandNop_return();
+    public final commandNop_return commandNop() throws RecognitionException {
+        commandNop_return retval = new commandNop_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -950,16 +950,16 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandEqual"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:64:1: commandEqual : vars ':=' exprs -> ^( EQUAL vars exprs ) ;
-    public final WhileParser.commandEqual_return commandEqual() throws RecognitionException {
-        WhileParser.commandEqual_return retval = new WhileParser.commandEqual_return();
+    public final commandEqual_return commandEqual() throws RecognitionException {
+        commandEqual_return retval = new commandEqual_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
         Token string_literal25=null;
-        WhileParser.vars_return vars24 = null;
+        vars_return vars24 = null;
 
-        WhileParser.exprs_return exprs26 = null;
+        exprs_return exprs26 = null;
 
 
         Object string_literal25_tree=null;
@@ -1041,8 +1041,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandIf"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:67:1: commandIf : 'if' expression 'then' c1= commands ( 'else' c2= commands )? 'fi' -> ^( IF ^( CONDITION expression ) ^( THEN $c1) ( ^( ELSE $c2) )? ) ;
-    public final WhileParser.commandIf_return commandIf() throws RecognitionException {
-        WhileParser.commandIf_return retval = new WhileParser.commandIf_return();
+    public final commandIf_return commandIf() throws RecognitionException {
+        commandIf_return retval = new commandIf_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -1051,11 +1051,11 @@ public class WhileParser extends Parser {
         Token string_literal29=null;
         Token string_literal30=null;
         Token string_literal31=null;
-        WhileParser.commands_return c1 = null;
+        commands_return c1 = null;
 
-        WhileParser.commands_return c2 = null;
+        commands_return c2 = null;
 
-        WhileParser.expression_return expression28 = null;
+        expression_return expression28 = null;
 
 
         Object string_literal27_tree=null;
@@ -1207,8 +1207,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandWhile"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:72:1: commandWhile : 'while' expression 'do' commands 'od' -> ^( WHILE expression commands ) ;
-    public final WhileParser.commandWhile_return commandWhile() throws RecognitionException {
-        WhileParser.commandWhile_return retval = new WhileParser.commandWhile_return();
+    public final commandWhile_return commandWhile() throws RecognitionException {
+        commandWhile_return retval = new commandWhile_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -1216,9 +1216,9 @@ public class WhileParser extends Parser {
         Token string_literal32=null;
         Token string_literal34=null;
         Token string_literal36=null;
-        WhileParser.expression_return expression33 = null;
+        expression_return expression33 = null;
 
-        WhileParser.commands_return commands35 = null;
+        commands_return commands35 = null;
 
 
         Object string_literal32_tree=null;
@@ -1310,8 +1310,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandFor"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:75:1: commandFor : 'for' expression 'do' commands 'od' -> ^( FOR expression commands ) ;
-    public final WhileParser.commandFor_return commandFor() throws RecognitionException {
-        WhileParser.commandFor_return retval = new WhileParser.commandFor_return();
+    public final commandFor_return commandFor() throws RecognitionException {
+        commandFor_return retval = new commandFor_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -1319,9 +1319,9 @@ public class WhileParser extends Parser {
         Token string_literal37=null;
         Token string_literal39=null;
         Token string_literal41=null;
-        WhileParser.expression_return expression38 = null;
+        expression_return expression38 = null;
 
-        WhileParser.commands_return commands40 = null;
+        commands_return commands40 = null;
 
 
         Object string_literal37_tree=null;
@@ -1413,8 +1413,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "commandForeach"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:78:1: commandForeach : 'foreach' Variable 'in' expression 'do' commands 'od' -> ^( FOREACH Variable expression commands ) ;
-    public final WhileParser.commandForeach_return commandForeach() throws RecognitionException {
-        WhileParser.commandForeach_return retval = new WhileParser.commandForeach_return();
+    public final commandForeach_return commandForeach() throws RecognitionException {
+        commandForeach_return retval = new commandForeach_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -1424,9 +1424,9 @@ public class WhileParser extends Parser {
         Token string_literal44=null;
         Token string_literal46=null;
         Token string_literal48=null;
-        WhileParser.expression_return expression45 = null;
+        expression_return expression45 = null;
 
-        WhileParser.commands_return commands47 = null;
+        commands_return commands47 = null;
 
 
         Object string_literal42_tree=null;
@@ -1529,23 +1529,23 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "command"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:81:1: command : ( commandNop | commandEqual | commandIf | commandWhile | commandFor | commandForeach );
-    public final WhileParser.command_return command() throws RecognitionException {
-        WhileParser.command_return retval = new WhileParser.command_return();
+    public final command_return command() throws RecognitionException {
+        command_return retval = new command_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        WhileParser.commandNop_return commandNop49 = null;
+        commandNop_return commandNop49 = null;
 
-        WhileParser.commandEqual_return commandEqual50 = null;
+        commandEqual_return commandEqual50 = null;
 
-        WhileParser.commandIf_return commandIf51 = null;
+        commandIf_return commandIf51 = null;
 
-        WhileParser.commandWhile_return commandWhile52 = null;
+        commandWhile_return commandWhile52 = null;
 
-        WhileParser.commandFor_return commandFor53 = null;
+        commandFor_return commandFor53 = null;
 
-        WhileParser.commandForeach_return commandForeach54 = null;
+        commandForeach_return commandForeach54 = null;
 
 
 
@@ -1702,8 +1702,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "vars"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:84:1: vars : Variable ( ',' Variable )* -> ^( VARS ( Variable )+ ) ;
-    public final WhileParser.vars_return vars() throws RecognitionException {
-        WhileParser.vars_return retval = new WhileParser.vars_return();
+    public final vars_return vars() throws RecognitionException {
+        vars_return retval = new vars_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -1817,16 +1817,16 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprs"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:87:1: exprs : expression ( ',' expression )* -> ^( EXPRS ( expression )+ ) ;
-    public final WhileParser.exprs_return exprs() throws RecognitionException {
-        WhileParser.exprs_return retval = new WhileParser.exprs_return();
+    public final exprs_return exprs() throws RecognitionException {
+        exprs_return retval = new exprs_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
         Token char_literal59=null;
-        WhileParser.expression_return expression58 = null;
+        expression_return expression58 = null;
 
-        WhileParser.expression_return expression60 = null;
+        expression_return expression60 = null;
 
 
         Object char_literal59_tree=null;
@@ -1937,8 +1937,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprBase1"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:90:1: exprBase1 : ( 'nil' -> NIL | Variable | Symbol );
-    public final WhileParser.exprBase1_return exprBase1() throws RecognitionException {
-        WhileParser.exprBase1_return retval = new WhileParser.exprBase1_return();
+    public final exprBase1_return exprBase1() throws RecognitionException {
+        exprBase1_return retval = new exprBase1_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -2058,8 +2058,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprBase2"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:93:1: exprBase2 : ( '(' 'cons' lexpr ')' -> ^( CONS ( lexpr )? ) | '(' 'list' lexpr ')' -> ^( LIST ( lexpr )? ) );
-    public final WhileParser.exprBase2_return exprBase2() throws RecognitionException {
-        WhileParser.exprBase2_return retval = new WhileParser.exprBase2_return();
+    public final exprBase2_return exprBase2() throws RecognitionException {
+        exprBase2_return retval = new exprBase2_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -2070,9 +2070,9 @@ public class WhileParser extends Parser {
         Token char_literal68=null;
         Token string_literal69=null;
         Token char_literal71=null;
-        WhileParser.lexpr_return lexpr66 = null;
+        lexpr_return lexpr66 = null;
 
-        WhileParser.lexpr_return lexpr70 = null;
+        lexpr_return lexpr70 = null;
 
 
         Object char_literal64_tree=null;
@@ -2247,8 +2247,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprBase3"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:96:1: exprBase3 : ( '(' 'hd' exprBase ')' -> ^( HD exprBase ) | '(' 'tl' exprBase ')' -> ^( TL exprBase ) );
-    public final WhileParser.exprBase3_return exprBase3() throws RecognitionException {
-        WhileParser.exprBase3_return retval = new WhileParser.exprBase3_return();
+    public final exprBase3_return exprBase3() throws RecognitionException {
+        exprBase3_return retval = new exprBase3_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -2259,9 +2259,9 @@ public class WhileParser extends Parser {
         Token char_literal76=null;
         Token string_literal77=null;
         Token char_literal79=null;
-        WhileParser.exprBase_return exprBase74 = null;
+        exprBase_return exprBase74 = null;
 
-        WhileParser.exprBase_return exprBase78 = null;
+        exprBase_return exprBase78 = null;
 
 
         Object char_literal72_tree=null;
@@ -2426,8 +2426,8 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprBase4"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:99:1: exprBase4 : '(' Symbol lexpr ')' -> ^( SYMB Symbol ( lexpr )? ) ;
-    public final WhileParser.exprBase4_return exprBase4() throws RecognitionException {
-        WhileParser.exprBase4_return retval = new WhileParser.exprBase4_return();
+    public final exprBase4_return exprBase4() throws RecognitionException {
+        exprBase4_return retval = new exprBase4_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
@@ -2435,7 +2435,7 @@ public class WhileParser extends Parser {
         Token char_literal80=null;
         Token Symbol81=null;
         Token char_literal83=null;
-        WhileParser.lexpr_return lexpr82 = null;
+        lexpr_return lexpr82 = null;
 
 
         Object char_literal80_tree=null;
@@ -2525,19 +2525,19 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "exprBase"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:102:1: exprBase : ( exprBase1 | exprBase2 | exprBase3 | exprBase4 );
-    public final WhileParser.exprBase_return exprBase() throws RecognitionException {
-        WhileParser.exprBase_return retval = new WhileParser.exprBase_return();
+    public final exprBase_return exprBase() throws RecognitionException {
+        exprBase_return retval = new exprBase_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        WhileParser.exprBase1_return exprBase184 = null;
+        exprBase1_return exprBase184 = null;
 
-        WhileParser.exprBase2_return exprBase285 = null;
+        exprBase2_return exprBase285 = null;
 
-        WhileParser.exprBase3_return exprBase386 = null;
+        exprBase3_return exprBase386 = null;
 
-        WhileParser.exprBase4_return exprBase487 = null;
+        exprBase4_return exprBase487 = null;
 
 
 
@@ -2666,16 +2666,16 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "expression"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:105:1: expression : exprBase ( '=?' exprBase )? -> ( exprBase )+ ;
-    public final WhileParser.expression_return expression() throws RecognitionException {
-        WhileParser.expression_return retval = new WhileParser.expression_return();
+    public final expression_return expression() throws RecognitionException {
+        expression_return retval = new expression_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
         Token string_literal89=null;
-        WhileParser.exprBase_return exprBase88 = null;
+        exprBase_return exprBase88 = null;
 
-        WhileParser.exprBase_return exprBase90 = null;
+        exprBase_return exprBase90 = null;
 
 
         Object string_literal89_tree=null;
@@ -2771,13 +2771,13 @@ public class WhileParser extends Parser {
 
     // $ANTLR start "lexpr"
     // C:\\Users\\erwan\\Documents\\Cours\\4-ESIR\\4A\\S7\\TLC\\TP\\Projet\\Projet_TLC\\Grammar\\While.g:108:1: lexpr : ( exprBase )* -> ( exprBase )* ;
-    public final WhileParser.lexpr_return lexpr() throws RecognitionException {
-        WhileParser.lexpr_return retval = new WhileParser.lexpr_return();
+    public final lexpr_return lexpr() throws RecognitionException {
+        lexpr_return retval = new lexpr_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        WhileParser.exprBase_return exprBase91 = null;
+        exprBase_return exprBase91 = null;
 
 
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");

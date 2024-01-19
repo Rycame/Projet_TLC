@@ -37,7 +37,7 @@ Symbol
 	:	'a'..'z'('A'..'Z'|'a'..'z'|'0'..'9')*('!'|'?')?;
 	
 program 
-	:	function program? -> ^(PROGRAM function+);
+	:	function+  -> ^(PROGRAM function+);
 	
 function
 	:	'function' Symbol ':' definition -> ^(FUNCTION ^(NOM Symbol) definition);
@@ -50,10 +50,10 @@ input
 //	:	inputSub? -> inputSub?;
 	
 inputSub
-	:	Variable (',' inputSub)? -> ^(INPUTS Variable*);
+	:	Variable (',' Variable)* -> ^(INPUTS Variable*);
 	
 output	
-	:	Variable (',' output)? -> ^(OUTPUTS Variable+);
+	:	Variable (',' Variable)* -> ^(OUTPUTS Variable+);
 	
 commands
 	:	command (';' command)* -> ^(COMMANDS command+);
@@ -106,5 +106,5 @@ expression
 	:	exprBase ('=?' exprBase)? -> exprBase+ ;
 	
 lexpr
-	:	(exprBase lexpr)? -> exprBase?;
+	:	exprBase* -> exprBase*;
 
