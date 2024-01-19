@@ -24,6 +24,9 @@ public class Main {
         TableSymbole tableSymbole = new TableSymbole(tree);
         tableSymbole.afficherTable();
 
-        System.out.println(tableSymbole.analyse((CommonTree) tree));
+        System.out.println(tableSymbole.analyse(tree));
+
+        TroisAdresses troisAdresses = new TroisAdresses();
+        troisAdresses.generate(tree);
     }
 }
