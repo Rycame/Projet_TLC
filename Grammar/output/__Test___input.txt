@@ -1,25 +1,31 @@
-function and : 
-read Op1, Op2 
-% 
-if (Op1 =? Op2) then 
- Result := (false) 
-else 
- if (not Op2) then
- Result := (false) 
- fi 
-fi 
-% 
-write Result,Result
+function add :
+  read Op1, Op2
+%
+  Result := Op1 ;
+  Op1 := Result;
+  for Op2 do
+    Result := ( cons nil Result )
+  od
+%
+  write Result
 
-function test : 
-read Op1, Op2 
-% 
-if (Op1 =? Op2) then 
- Result := (false) 
-else 
- if (not Op2) then
- Result := (false Param1 Param2) 
- fi 
-fi 
-% 
-write Result
+function sub :
+  read Op1, Op2
+%
+  Result := Op1;
+  for Op2 do
+    Result := (tl Result);
+    Result := (add Op1 Op2);
+    Result := (false param1 param2);
+    Result := (add Op1);
+    Result, Op1 := (add Op1 Op2)
+  od
+%
+  write Result
+
+function sub :
+  read
+%
+  nop
+%
+ write Vide

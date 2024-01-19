@@ -28,9 +28,9 @@ public class TableSymbole {
     }
 
     public Fonction getFonction(String nom) {
-        for (Fonction entry : fonctions) {
-            if (entry.getNom().equals(nom)) {
-                return entry;
+        for (Fonction fonction : fonctions) {
+            if (fonction.getNom().equals(nom)) {
+                return fonction;
             }
         }
         return null;
@@ -65,8 +65,8 @@ public class TableSymbole {
     }
 
     public boolean existeFonction(String nom) {
-        for (Fonction entry : fonctions) {
-            if (entry.getNom().equals(nom)) {
+        for (Fonction fonction : fonctions) {
+            if (fonction.getNom().equals(nom)) {
                 return true;
             }
         }
@@ -246,14 +246,92 @@ public class TableSymbole {
         return name;
     }
 
-    // private void validation(CommonTree ast) throws Exception {
-    //     if (ast != null) {
-    //         for (int i = 0; i < ast.getChildCount(); i++) {
-    //             CommonTree child = (CommonTree) ast.getChild(i);
-    //             if (child.getType() == WhileParser.SYMB) {
-                    
-    //             }
-    //         }
-    //     }
-    // }
+    public boolean analyse(CommonTree ast) {
+        return this.analyseNomFonction() && this.parcoursAppelsFonctions(ast, true);
+    }
+
+    // Vérifie qu'aucune fonction n'a le même nom
+    private boolean analyseNomFonction() {
+        boolean aucuneFonctionAvecMemeNom = true;
+        for (int i = 0; i < this.fonctions.size(); i++) {
+            for (int j = i + 1; j < this.fonctions.size(); j++) {
+                if (this.fonctions.get(i).getNom().equals(this.fonctions.get(j).getNom())) {
+                    System.out.println("Les fonctions n°" + i + " & n°" + j + " portent le même nom.");
+                    aucuneFonctionAvecMemeNom = false;
+                    break;
+                }
+            }
+
+            if (!aucuneFonctionAvecMemeNom) {
+                break;
+            }
+        }
+
+        return aucuneFonctionAvecMemeNom;
+    }
+
+    // Parcours récursif de l'AST à la recherche d'appels de fonctions, retourne faux si une fonction est mal appelée
+    private boolean parcoursAppelsFonctions(CommonTree ast, boolean res) {
+        if (ast != null) {
+            for (int i = 0; i < ast.getChildCount(); i++) {
+                if (ast.getChild(i).getType() == WhileParser.EQUAL && isAppelFonction((CommonTree) ast.getChild(i))) {
+                    res = analyseAppelFonction((CommonTree) ast.getChild(i)) && res;
+                } else {
+                    res = res && parcoursAppelsFonctions((CommonTree) ast.getChild(i), res);
+                }
+            }
+        }
+
+        return res;
+    }
+
+    private boolean analyseAppelFonction(CommonTree appel) {
+        if (appel == null) {
+            return false;
+        }
+
+        CommonTree vars = (CommonTree) appel.getChild(0);
+        List<String> receveuses = new ArrayList<>();
+        for (int j = 0; j < vars.getChildCount(); j++) {
+            receveuses.add(vars.getChild(j).getText());
+        }
+
+        CommonTree symb = (CommonTree) appel.getChild(1).getChild(0);
+        String fonctionName = symb.getChild(0).getText();
+        List<String> parametres = new ArrayList<>();
+        for (int k = 1; k < symb.getChildCount(); k++) {
+            parametres.add(symb.getChild(k).getText());
+        }
+
+        if (!this.existeFonction(fonctionName)) {
+            System.out.println("La fonction '" + fonctionName + "' est appelée mais n'est pas définie.");
+            return false;
+        }
+
+        Fonction fonction = this.getFonction(fonctionName);
+        if (parametres.size() != fonction.getParametres().size()) {
+            System.out.println("La fonction '" + fonction.getNom() + "' attend " + fonction.getParametres().size() + " paramètres mais on lui en passe " + parametres.size() + ".");
+            return false;
+        } else if (receveuses.size() != fonction.getOutputs().size()) {
+            System.out.println("La fonction '" + fonction.getNom() + "' retourne " + fonction.getOutputs().size() + " variables mais on en récupère " + receveuses.size() + ".");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isAppelFonction(CommonTree equal) {
+        if (equal == null) {
+            return false;
+        }
+
+        /*
+            Vérifie qu'il a au moins deux enfants
+            Vérifie que le premier enfant est une liste de variables
+            Vérifie que le deuxième est une Expression qui a au moins un fils et que ce premier est un Symb
+         */
+        return equal.getChildCount() >= 2 &&
+                equal.getChild(0).getType() == WhileParser.VARS &&
+                (equal.getChild(1).getType() == WhileParser.EXPRS && equal.getChild(1).getChildCount() >= 1 && equal.getChild(1).getChild(0).getType() == WhileParser.SYMB);
+    }
 }

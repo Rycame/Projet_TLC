@@ -5,7 +5,7 @@ import org.antlr.runtime.tree.CommonTree;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Le fichier contenant le programme While
-        ANTLRFileStream input = new ANTLRFileStream("Projet_TLC/test/Test.while");
+        ANTLRFileStream input = new ANTLRFileStream("src/__Test___input.txt");
 
         // Créer le Lexer et le Parser
         WhileLexer lexer = new WhileLexer(input);
@@ -23,5 +23,7 @@ public class Main {
 
         TableSymbole tableSymbole = new TableSymbole(tree);
         tableSymbole.afficherTable();
+
+        System.out.println(tableSymbole.analyse((CommonTree) tree));
     }
 }
