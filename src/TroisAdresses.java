@@ -1,5 +1,9 @@
 import org.antlr.runtime.tree.CommonTree;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +12,47 @@ public class TroisAdresses {
     int nbEquals;
     int nbFor;
     int nbWhile;
+    int nbIf;
+    int nbForeach;
+    final String fileName = "code.3addr";
 
     public TroisAdresses() {
         this.nbFonctions = 0;
         this.nbEquals = 0;
         this.nbFor = 0;
         this.nbWhile = 0;
+        this.nbIf = 0;
+        this.nbForeach = 0;
+
+        this.creerFichier();
+    }
+
+    private void creerFichier() {
+        try {
+            File fichier = new File(this.fileName);
+
+            if (fichier.exists()) {
+                fichier.delete();
+            }
+
+            fichier.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ajouterTexte(String texte) {
+        try {
+            FileWriter fileWriter = new FileWriter(this.fileName, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(texte);
+            bufferedWriter.newLine();
+
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void generate(CommonTree ast) {
@@ -21,8 +60,10 @@ public class TroisAdresses {
 
         System.out.println(this.nbFonctions + " fonctions.");
         System.out.println(this.nbEquals + " equals.");
+        System.out.println(this.nbIf + " if statements.");
         System.out.println(this.nbFor + " for loop.");
         System.out.println(this.nbWhile + " while loop.");
+        System.out.println("Le code trois adresses a été généré avec succès.");
     }
 
     private void parcoursAst(CommonTree ast) {
@@ -39,11 +80,9 @@ public class TroisAdresses {
 
     private void parcoursFunction(CommonTree function) {
         this.nbFonctions += 1;
-        System.out.println("\n");
 
         String name = function.getChild(0).getChild(0).getText();
-        System.out.println("func begin " + name);
-
+        this.ajouterTexte("func begin " + name);
 
         List<String> inputs = new ArrayList<>();
         for (int i = 0; i < function.getChild(1).getChildCount(); i++) {
@@ -51,7 +90,7 @@ public class TroisAdresses {
         }
 
         for (String input : inputs) {
-            System.out.println("param " + input);
+            this.ajouterTexte("param " + input);
         }
 
         this.parcoursCommands((CommonTree) function.getChild(2));
@@ -61,11 +100,10 @@ public class TroisAdresses {
             outputs.add(function.getChild(3).getChild(i).getText());
         }
         for (String output : outputs) {
-            System.out.println("return " + output);
+            this.ajouterTexte("return " + output);
         }
 
-
-        System.out.println("func end");
+        this.ajouterTexte("func end");
     }
 
     private void parcoursCommands(CommonTree commands) {
@@ -76,6 +114,10 @@ public class TroisAdresses {
                 this.parcoursFor((CommonTree) commands.getChild(i));
             } else if (commands.getChild(i).getType() == WhileParser.WHILE) {
                 this.parcoursWhile((CommonTree) commands.getChild(i));
+            } else if (commands.getChild(i).getType() == WhileParser.IF) {
+                this.parcoursIf((CommonTree) commands.getChild(i));
+            } else if (commands.getChild(i).getType() == WhileParser.FOREACH) {
+                this.parcoursForeach((CommonTree) commands.getChild(i));
             }
         }
     }
@@ -87,16 +129,16 @@ public class TroisAdresses {
 
         if (equal.getChild(1).getChild(0).getType() == WhileParser.Variable) {
             String expr = equal.getChild(1).getChild(0).getText();
-            System.out.println(var + "=" + expr);
+            this.ajouterTexte(var + "=" + expr);
         } else if (equal.getChild(1).getChild(0).getType() == WhileParser.SYMB) {
             CommonTree symb = (CommonTree) equal.getChild(1).getChild(0);
             StringBuilder callFonction = new StringBuilder("call");
             for (int i = 0; i < symb.getChildCount(); i++) {
                 callFonction.append(" ").append(symb.getChild(i).getText());
             }
-            System.out.println(var + "=" + callFonction.toString());
+            this.ajouterTexte(var + "=" + callFonction.toString());
         } else {
-            System.out.println("Var=" + equal.getChild(1).getChild(0).getText() + " n'est pas encore implémenté.");
+            this.ajouterTexte("Var=" + equal.getChild(1).getChild(0).getText() + " n'est pas encore implémenté.");
         }
     }
 
@@ -104,29 +146,50 @@ public class TroisAdresses {
         this.nbFor += 1;
 
         String condition = forLoop.getChild(0).getText();
-        System.out.println("for_" + this.nbFor + "_debut:");
-        System.out.println("if " + condition + " goto for_" + this.nbFor + "_loop");
-        System.out.println("goto for_" + this.nbFor + "_fin");
-        System.out.println("for_" + this.nbFor + "_loop:");
+        this.ajouterTexte("for_" + this.nbFor + "_debut:");
+        this.ajouterTexte("if " + condition + " goto for_" + this.nbFor + "_loop");
+        this.ajouterTexte("goto for_" + this.nbFor + "_fin");
+        this.ajouterTexte("for_" + this.nbFor + "_loop:");
         parcoursCommands((CommonTree) forLoop.getChild(1));
-        System.out.println("goto for_" + this.nbFor + "_debut");
-        System.out.println("for_" + this.nbFor + "_fin:");
+        this.ajouterTexte("goto for_" + this.nbFor + "_debut");
+        this.ajouterTexte("for_" + this.nbFor + "_fin:");
     }
 
     private void parcoursWhile(CommonTree whileLoop) {
         this.nbWhile += 1;
 
         String condition = whileLoop.getChild(0).getText();
-        System.out.println("while_" + this.nbWhile + "_debut:");
-        System.out.println("if " + condition + " goto while_" + this.nbWhile + "_loop");
-        System.out.println("goto while_" + this.nbWhile + "_fin");
-        System.out.println("while_" + this.nbWhile + "_loop:");
+        this.ajouterTexte("while_" + this.nbWhile + "_debut:");
+        this.ajouterTexte("if " + condition + " goto while_" + this.nbWhile + "_loop");
+        this.ajouterTexte("goto while_" + this.nbWhile + "_fin");
+        this.ajouterTexte("while_" + this.nbWhile + "_loop:");
         parcoursCommands((CommonTree) whileLoop.getChild(1));
-        System.out.println("goto while_" + this.nbWhile + "_debut");
-        System.out.println("while_" + this.nbWhile + "_fin:");
+        this.ajouterTexte("goto while_" + this.nbWhile + "_debut");
+        this.ajouterTexte("while_" + this.nbWhile + "_fin:");
     }
 
-    private void parcoursIf(CommonTree ifStmnt){
+    private void parcoursIf(CommonTree ifStmnt) {
+        this.nbIf += 1;
 
+        String condition = ifStmnt.getChild(0).getChild(0).getText();
+        this.ajouterTexte("if " + condition + " goto if_" + this.nbIf + "_debut");
+        if (ifStmnt.getChildCount() >= 3) {
+            this.ajouterTexte("goto else_" + this.nbIf + "_debut");
+        }
+        this.ajouterTexte("if_" + this.nbIf + "_debut:");
+        this.parcoursCommands((CommonTree) ifStmnt.getChild(1).getChild(0));
+        this.ajouterTexte("goto if_" + this.nbIf + "_fin");
+        if (ifStmnt.getChildCount() >= 3) {
+            this.ajouterTexte("else_" + this.nbIf + "_debut:");
+            this.parcoursCommands((CommonTree) ifStmnt.getChild(2).getChild(0));
+            this.ajouterTexte("goto if_" + this.nbIf + "_fin");
+        }
+        this.ajouterTexte("if_" + this.nbIf + "_fin:");
+    }
+
+    private void parcoursForeach(CommonTree foreach) {
+        this.nbForeach += 1;
+
+        this.ajouterTexte("Le foreach n'a pas encore été implémenté.");
     }
 }
